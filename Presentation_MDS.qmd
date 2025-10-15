@@ -1,83 +1,154 @@
 ---
-title: "Analyse Multidimensionnelle des Similarités (MDS)"
-subtitle: "Application à une analyse sensorielle de fraises"
-author: Valentine J, Vadim L, Emilie N
-format: revealjs
-editor: visual
+title: "Analyse multidimensionnelle : MDS (Multidimensional Scaling)"
+subtitle: "Cours de visualisation multidimensionnelle"
+author: "Vadim L, Valentine J, Emilie N"
+format:
+  revealjs:
+    theme: "serif"
+    transition: fade
+    slide-number: true
+    center: true
+    incremental: true
 ---
 
-## Introduction
+## Objectif du MDS
 
----
+**Multidimensional Scaling (MDS)**\
+À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une **carte** qui préserve les distances entre les points.
 
-## Objectif MDS
+-   On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).\
 
-À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une carte qui préserve les distances entre les points.
-	On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).
-	La carte reconstruite fournit des coordonnées x_i=(x_i1,x_i2) ,
-et la distance naturelle est ∥x_i-x_j ∥_2.
+-   La carte reconstruite fournit des coordonnées ( x_i = (x\_{i1}, x\_{i2}) ).\
 
+-   La distance naturelle est :\
+    \[ \|x_i - x_j\|\_2 \]
 
+    exemple de sortie
 
----
+------------------------------------------------------------------------
+
+## Famille de méthodes MDS
+
+Le **MDS** n’est pas une seule méthode, mais une **famille d’algorithmes** visant à trouver une configuration optimale dans un espace de faible dimension (souvent p = 2 ).
+
+Les principales méthodes : - **MDS classique** (*Classical MDS*) - **MDS métrique** (*Metric MDS*) - **MDS non métrique** (*Non-metric MDS*)
+
+------------------------------------------------------------------------
+
+## Exemple : perception des couleurs
+
+*(Insérer ici l’exemple du PDF)*\
+
+------------------------------------------------------------------------
+
+## Distance, dissimilarité et similarité
+
+Les notions de **distance**, **dissimilarité** et **similarité (ou proximité)** sont définies pour toute paire d’objets.
+
+On peut se demander si les dissimilarités données sont **vraiment des distances**, et si elles peuvent être **interprétées comme des distances euclidiennes**.
+
+Étant donnée une matrice de dissimilarités ![](data:image/emf;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAcCAYAAADIrlf0AAAAAXNSR0IArs4c6QAAAHhlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACQAAAAAQAAAJAAAAABAAKgAgAEAAAAAQAAADGgAwAEAAAAAQAAABwAAAAA/Uu9AgAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAthJREFUWAntlEuIjWEYx88wGBRFWbjGkDRM7reNQky5l8TsXBKxsbRxzkhRbNSshiiNmiLJuGSBkppxSRqUKRllNozrwrURv//xPqenr3OYyZxTX33/+p3n8r7n/Z73WpZKpX5BBuKqdDmVH4S6uM5AdfeLc/FWu01iEInKwGisdqgYmsSgO/MMXE3uAKzO0+ZTIwj2wmCftEkMI3kVmqAeuuAQ9KU2M1gjtOQZ9DG5tTA+T5tPfSD4CK2gxc7J7sMjMrtCdjpWF35NiP/XTGOAVzCqwEBl5N/BrALt0XQtCU1Eyl5sOdqeKrCGJ/jtsAiawUuFFCrmG23Pfefg78HehjeubSD+PtA35Is26InO0+k0LFZnO/tz8b+DttX0CeenBc6uw9/iYu++INjhE8Ffjm2I5I8SD4eNIF/30r43El+LqolLA2AlXFaAfoBqXabAJrEQ/wHYIBpwKhyHqE6QEL3RODo/dH+YgL8bxkA36MK2gGkGjlbZJjEWX3fGJoGbHU93qNMmoS21o6QOW0F34qKCiLYT10ZyFr7EUXtUOvPCNB9Hx64LKqAG9E1JBa+AJgVIR11t5xQ46VHKjmmT0KzPhA7a+iOwDb6EnDdXCO75hPO/Ot+7nQSz4VZIDsXq+Ep6WnXH2mEm6IFZBY0gacwp8FSBkx6BSxZfw9Gq34BWuAlLoS/VwGBn3YBa7Q7QEdIx0STlz4EKeA1+554RTwSTHgEtwhJIK1mnnyKrmvFVqC6sqRynfwhUuBWtU3EdhoQ23RdNymsTgXZMSutclUJtfETH5gJMDh/sxtpDoqdZp0FSTXpUMiAtgPtZ78/PBkwG9KplpdUolU7xobtQA/V/+egd2qrgc+izHtscfO1KJcwDa889saFP0Y0up/iXrMDDdHwLJ8Mf3mOPBT9nSrkTuY/2wtnfk76ahM5qnBX3+uO89kntyQokK5CsQLICyQr0YgV+A/uPeymHaxNCAAAAAElFTkSuQmCC), le MDS cherche à trouver\
+des points ![](data:image/emf;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAaCAYAAAD7aXGFAAAAAXNSR0IArs4c6QAAAHhlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACQAAAAAQAAAJAAAAABAAKgAgAEAAAAAQAAAEmgAwAEAAAAAQAAABoAAAAA8K/JTwAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAy5JREFUWAntlntojlEcx5+XaS5zCWEyKSK5pLRc22gkkuQ/La0ptxJ/UIi8m9JcQhJtIdHIH9SkpblEKTZFyh+a3K//bIy5ZMx8vo/ncDy90/uWPcL51uc5v3Oe53nPOd/zO+d5Y57ntUAROCV2IJ5G+yYoTnzftcoBmfS/qC8TzbAm20xcD41WWx5xDpTCEqiCf86kzpoU+gxNfvTjkku4C25ALxgIDVALi0BmDYYF0AcuwW6obMflb5cmdhbq4CE8gDII6yQNT+AElMMEeAa3YCF8gkPQFdbCTfB3mjFJZ1INZME4uAqjIApNpxP1lw8aoCaxGpJRjIeOwwXQdlIGqCyEsPSBsvWUivqTUR2CG2Mpb8NrmANnwJNJ2qdy8xUsg52wH+5BFBpKJ1rBpaB+r8B5SEb9eWg47AGtenqAnwHErakfN7QQH0HbqxykyaDM3AYyrAR8mS/bKmpvYNi3Zv/ag+tWyLba2iLU+aCVXpnij2siek9bzeZwgt9RQlRDAVyHa1AJdp8V1GeBOdsIPf8vgAIpE5RNtaogrVIRTIRz0JbSFpG07SRtI2WWFu0OzIW98BxsyZh3oMzQYZ2sDvJgLhyF9XAa7oPm3xvew3fJ3W4wH7qA9vQgGA8a0GK4C1otozUEWnlbOujGQEeIg+5r4Iq7g9FsgpmmQqlMHQnbQauaA9kwAppBxmiRBoCMCusRDTJxM2j8v5I5f/VMe9gIG6AYtoBUCEf8KHR5Qf0ipMMpkCnzwKiCIM9UKF+G6rrVAAXQE1pgCpitkEVsVEZQaiqU66AeRkN+EO+jlNTnZT/yPI1hRhCHiyE0aPzKqLcBxyjDWkGD+tKWqwGZegB0OCtzlkMixdVYArHgrhxWNtjSAKcFDTokH4O+CqlKv62zwJ5sJ+paHKMME1CalVZTHWSCGafaopJ/JjXRm1ZfUooLI6XxJNBE9JlUyk6FRkhV2spK6yrrxQ9WrFCZYKRtpm2oPr/ADtBqK5MjV3HkPabeoTLuT2SRRvrT1y31oUf3RjjjouuZntJAe9+pdQecP6174+44B5wDzgHngHPAOeAccA44B36DA18BazeZv/7EkZQAAAAASUVORK5CYII=) tels que :
+
+\[ d\_{ij} \approx \|x_i - x_j\|\_2 \]
+
+-   Si la configuration exacte existe → **distance euclidienne**
+-   Sinon → **distance non euclidienne**
+
+------------------------------------------------------------------------
+
+## Exemple de distance non euclidienne
+
+La **distance radiale sur un cercle** (longueur de l’arc entre deux points) :
+
+-   Est bien une métrique,\
+-   Mais ne peut pas être représentée exactement dans un espace euclidien ( \mathbb{R}\^p ).
+
+Le MDS cherche une configuration **approchée** minimisant l’écart entre ( d\_{ij} ) et ( \|x_i - x_j\|\_2 ).
+
+Photo exemple dans le pdf FR
+
+------------------------------------------------------------------------
+
+## MDS classique : idée générale
+
+**But :** retrouver les coordonnées des points à partir d’une matrice de distances ( D = (d\_{ij}) ) supposées **euclidiennes**.
+
+\[ \|x_i - x_j\| \approx d\_{ij} \]
+
+Plutôt que de calculer ( X ) directement, on travaille avec la **matrice de produits scalaires** :
+
+\[ B = X X' \]
+
+Si ( X ) est centrée : \[ B = -\frac{1}{2} C D\^{(2)} C \] où ( C = I - \frac{1}{n}\mathbf{1}\mathbf{1}' ) est la **matrice de centrage**.
+
+------------------------------------------------------------------------
+
+## Étapes du calcul
+
+1.  **Données d’entrée :** la matrice des distances ( D = (d\_{ij}) ).\
+2.  **Centrage double :** \[ B = -\frac{1}{2} C D\^{(2)} C \]
+3.  **Décomposition en valeurs propres :** \[ B = V \Lambda V' \]
+4.  **Coordonnées finales :** \[ X = V \Lambda\^{1/2} \]
+
+::: fragment
+💡 *Pipeline du calcul :*\
+**Distances → Matrice B → Décomposition → Coordonnées (R²)**
+:::
+
+------------------------------------------------------------------------
+
+## Réduction des dimensions
+
+Souvent, on garde seulement les **p premières composantes** correspondant aux plus grandes valeurs propres :
+
+\[ X\^{(p)} = V_p \Lambda\_p\^{1/2} \]
+
+où : - ( \Lambda\_p ) = sous-matrice ( p \times p ) des plus grandes valeurs propres\
+- ( V_p ) = les colonnes associées de ( V )
+
+Les colonnes de ( X\^{(p)} ) sont les **axes principaux** (comme en ACP).\
+On obtient une **carte 2D/3D** qui préserve au mieux les distances.
+
+![Nuage de points MDS](img/mds_2d_plot.png){width="65%"}
+
+------------------------------------------------------------------------
+
+## Résumé : MDS classique
+
+\- Conserve les **distances euclidiennes** autant que possible.\
+- Produit des **coordonnées centrées** et ordonnées par importance (variance).\
+- Permet une **visualisation claire** des relations entre objets.\
+- Proche de l’**ACP**, mais part d’une **matrice de distances**.
+
+------------------------------------------------------------------------
+
+## Exemples : MDS classique
+
+*(Voir les 3 exemples du PDF)*\
+![Exemples MDS](img/mds_examples.png){width="70%"}
+
+------------------------------------------------------------------------
+
+## Distance Scaling (mise à l’échelle des distances)
+
+Le MDS classique cherche une configuration ( x_i ) telle que :
+
+\[ d\_{ij} \approx \hat{d}\_{ij} = \|x_i - x_j\|\_2 \]
+
+La **mise à l’échelle des distances** (Distance Scaling) assouplit cette contrainte en autorisant une **transformation monotone** :
+
+\[ \hat{d}*{ij}* \approx f(d{ij}) \]
+
+où ( f ) est une fonction **monotone croissante**.
+
+------------------------------------------------------------------------
 
 ## Types de MDS
 
-Le MDS n’est pas une seule méthode, mais une famille d’algorithmes visant à trouver une configuration optimale dans un espace de faible dimension (souvent p = 2 ou 3).
-Les principales méthodes MDS sont :
-1.	MDS classique (Classical MDS)
-2.	MDS métrique (Metric MDS)
-3.	MDS non métrique (Non-metric MDS)
+-   **MDS métrique :** les dissimilarités ( d\_{ij} ) sont **quantitatives**\
+-   **MDS non métrique :** les dissimilarités ( d\_{ij} ) sont **ordinales ou qualitatives**
 
----
+**Différence avec le MDS classique :** - cMDS : solution **analytique exacte** - (Non-)MDS métrique : solution **numérique** via **minimisation du stress** : \[ Stress = \sum*{i\<j} (d\*{ij} - \hat{d}\_{ij})\^2 \]
 
-## Exemple 1 : 
-
-Étude de la perception des couleurs par la vision humaine (Ekman, 1954 ; Izenman §13.2.1).
-	14 couleurs, différant uniquement par leur teinte (longueurs d’onde de 434 à 674 µm).
-	31 personnes évaluent chaque paire de couleurs sur une échelle de 0 à 4 :
-	0 = aucune similarité,
-	4 = identiques.
-	On obtient donc (14¦2) paires.
-	On fait la moyenne des 31 notations pour chaque paire → cela donne une mesure de similarité.
-	On la convertit ensuite en dissimilarité :
-dissimilarite =1-similarite
-
----
-
-On obtient une matrice 14 × 14 de dissimilarités, symétrique, avec des zéros sur la diagonale.
-Le MDS cherche une configuration à deux dimensions représentant ces couleurs.
-
-Le MDS reconstruit le célèbre cercle des couleurs en deux dimensions,
-montrant que la perception humaine de la teinte est naturellement circulaire.
-
----
-
-On peut se demander si les dissimilarités données sont vraiment des distances, et si elles peuvent être interprétées comme des distances euclidiennes.
- 
-Étant donnée une matrice de dissimilarités D=(d_ij), le MDS cherche à trouver
-des points x_1,…,x_n∈R^p tels que :
-d_ij≈∥x_i-x_j ∥_2
-
-	S’il existe une configuration exacte, on parle de distance euclidienne.
-	Mais parfois, il n’existe aucune configuration qui reproduise exactement d_ij
-	On parle alors de distance non euclidienne.
-
-	Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre deux points) est bien une métrique,
-mais ne peut pas être représentée exactement dans un espace euclidien R^p.
- 
-	Le MDS essaie malgré tout de trouver une configuration approchée minimisant l’écart entre
-d_ij et ∥x_i-x_j ∥_2.
-
----
-
----
-
----
-
-```{}
-```
-
-```{r}
-1 + 1
-```
+------------------------------------------------------------------------

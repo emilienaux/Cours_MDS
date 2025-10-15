@@ -9,8 +9,8 @@
 <link href="Presentation_MDS_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="author" content="Valentine J, Vadim L, Emilie N">
-  <title>Analyse Multidimensionnelle des Similarités (MDS)</title>
+  <meta name="author" content="Vadim L, Valentine J, Emilie N">
+  <title>Analyse multidimensionnelle : MDS (Multidimensional Scaling)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="Presentation_MDS_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="Presentation_MDS_files/libs/revealjs/dist/theme/quarto-816793a8a4a837d14f6ea458e2f1c5cb.css">
   <link href="Presentation_MDS_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Presentation_MDS_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Presentation_MDS_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -127,65 +127,128 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Analyse Multidimensionnelle des Similarités (MDS)</h1>
-  <p class="subtitle">Application à une analyse sensorielle de fraises</p>
+  <h1 class="title">Analyse multidimensionnelle : MDS (Multidimensional Scaling)</h1>
+  <p class="subtitle">Cours de visualisation multidimensionnelle</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Valentine J, Vadim L, Emilie N 
+Vadim L, Valentine J, Emilie N 
 </div>
 </div>
 </div>
 
 </section>
-<section id="introduction" class="slide level2">
-<h2>Introduction</h2>
+<section id="objectif-du-mds" class="slide level2 center">
+<h2>Objectif du MDS</h2>
+<p><strong>Multidimensional Scaling (MDS)</strong><br>
+À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une <strong>carte</strong> qui préserve les distances entre les points.</p>
+<ul>
+<li class="fragment"><p>On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).<br>
+</p></li>
+<li class="fragment"><p>La carte reconstruite fournit des coordonnées ( x_i = (x_{i1}, x_{i2}) ).<br>
+</p></li>
+<li class="fragment"><p>La distance naturelle est :<br>
+[ |x_i - x_j|_2 ]</p>
+<p>exemple de sortie</p></li>
+</ul>
 </section>
-<section id="objectif-mds" class="slide level2">
-<h2>Objectif MDS</h2>
-<p>À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une carte qui préserve les distances entre les points. On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique). La carte reconstruite fournit des coordonnées x_i=(x_i1,x_i2) , et la distance naturelle est ∥x_i-x_j ∥_2.</p>
+<section id="famille-de-méthodes-mds" class="slide level2 center">
+<h2>Famille de méthodes MDS</h2>
+<p>Le <strong>MDS</strong> n’est pas une seule méthode, mais une <strong>famille d’algorithmes</strong> visant à trouver une configuration optimale dans un espace de faible dimension (souvent p = 2 ).</p>
+<p>Les principales méthodes : - <strong>MDS classique</strong> (<em>Classical MDS</em>) - <strong>MDS métrique</strong> (<em>Metric MDS</em>) - <strong>MDS non métrique</strong> (<em>Non-metric MDS</em>)</p>
 </section>
-<section id="types-de-mds" class="slide level2">
+<section id="exemple-perception-des-couleurs" class="slide level2 center">
+<h2>Exemple : perception des couleurs</h2>
+<p><em>(Insérer ici l’exemple du PDF)</em><br>
+</p>
+</section>
+<section id="distance-dissimilarité-et-similarité" class="slide level2 center">
+<h2>Distance, dissimilarité et similarité</h2>
+<p>Les notions de&nbsp;<strong>distance</strong>,&nbsp;<strong>dissimilarité</strong>&nbsp;et&nbsp;<strong>similarité (ou proximité)</strong>&nbsp;sont définies pour toute paire d’objets.</p>
+<p>On peut se demander si les dissimilarités données sont&nbsp;<strong>vraiment des distances</strong>, et si elles peuvent être&nbsp;<strong>interprétées comme des distances euclidiennes</strong>.</p>
+<p>Étant donnée une matrice de dissimilarités&nbsp;<img data-src="data:image/emf;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAcCAYAAADIrlf0AAAAAXNSR0IArs4c6QAAAHhlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACQAAAAAQAAAJAAAAABAAKgAgAEAAAAAQAAADGgAwAEAAAAAQAAABwAAAAA/Uu9AgAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAthJREFUWAntlEuIjWEYx88wGBRFWbjGkDRM7reNQky5l8TsXBKxsbRxzkhRbNSshiiNmiLJuGSBkppxSRqUKRllNozrwrURv//xPqenr3OYyZxTX33/+p3n8r7n/Z73WpZKpX5BBuKqdDmVH4S6uM5AdfeLc/FWu01iEInKwGisdqgYmsSgO/MMXE3uAKzO0+ZTIwj2wmCftEkMI3kVmqAeuuAQ9KU2M1gjtOQZ9DG5tTA+T5tPfSD4CK2gxc7J7sMjMrtCdjpWF35NiP/XTGOAVzCqwEBl5N/BrALt0XQtCU1Eyl5sOdqeKrCGJ/jtsAiawUuFFCrmG23Pfefg78HehjeubSD+PtA35Is26InO0+k0LFZnO/tz8b+DttX0CeenBc6uw9/iYu++INjhE8Ffjm2I5I8SD4eNIF/30r43El+LqolLA2AlXFaAfoBqXabAJrEQ/wHYIBpwKhyHqE6QEL3RODo/dH+YgL8bxkA36MK2gGkGjlbZJjEWX3fGJoGbHU93qNMmoS21o6QOW0F34qKCiLYT10ZyFr7EUXtUOvPCNB9Hx64LKqAG9E1JBa+AJgVIR11t5xQ46VHKjmmT0KzPhA7a+iOwDb6EnDdXCO75hPO/Ot+7nQSz4VZIDsXq+Ep6WnXH2mEm6IFZBY0gacwp8FSBkx6BSxZfw9Gq34BWuAlLoS/VwGBn3YBa7Q7QEdIx0STlz4EKeA1+554RTwSTHgEtwhJIK1mnnyKrmvFVqC6sqRynfwhUuBWtU3EdhoQ23RdNymsTgXZMSutclUJtfETH5gJMDh/sxtpDoqdZp0FSTXpUMiAtgPtZ78/PBkwG9KplpdUolU7xobtQA/V/+egd2qrgc+izHtscfO1KJcwDa889saFP0Y0up/iXrMDDdHwLJ8Mf3mOPBT9nSrkTuY/2wtnfk76ahM5qnBX3+uO89kntyQokK5CsQLICyQr0YgV+A/uPeymHaxNCAAAAAElFTkSuQmCC">, le MDS cherche à trouver<br>
+des points&nbsp;<img data-src="data:image/emf;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAaCAYAAAD7aXGFAAAAAXNSR0IArs4c6QAAAHhlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACQAAAAAQAAAJAAAAABAAKgAgAEAAAAAQAAAEmgAwAEAAAAAQAAABoAAAAA8K/JTwAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAy5JREFUWAntlntojlEcx5+XaS5zCWEyKSK5pLRc22gkkuQ/La0ptxJ/UIi8m9JcQhJtIdHIH9SkpblEKTZFyh+a3K//bIy5ZMx8vo/ncDy90/uWPcL51uc5v3Oe53nPOd/zO+d5Y57ntUAROCV2IJ5G+yYoTnzftcoBmfS/qC8TzbAm20xcD41WWx5xDpTCEqiCf86kzpoU+gxNfvTjkku4C25ALxgIDVALi0BmDYYF0AcuwW6obMflb5cmdhbq4CE8gDII6yQNT+AElMMEeAa3YCF8gkPQFdbCTfB3mjFJZ1INZME4uAqjIApNpxP1lw8aoCaxGpJRjIeOwwXQdlIGqCyEsPSBsvWUivqTUR2CG2Mpb8NrmANnwJNJ2qdy8xUsg52wH+5BFBpKJ1rBpaB+r8B5SEb9eWg47AGtenqAnwHErakfN7QQH0HbqxykyaDM3AYyrAR8mS/bKmpvYNi3Zv/ag+tWyLba2iLU+aCVXpnij2siek9bzeZwgt9RQlRDAVyHa1AJdp8V1GeBOdsIPf8vgAIpE5RNtaogrVIRTIRz0JbSFpG07SRtI2WWFu0OzIW98BxsyZh3oMzQYZ2sDvJgLhyF9XAa7oPm3xvew3fJ3W4wH7qA9vQgGA8a0GK4C1otozUEWnlbOujGQEeIg+5r4Iq7g9FsgpmmQqlMHQnbQauaA9kwAppBxmiRBoCMCusRDTJxM2j8v5I5f/VMe9gIG6AYtoBUCEf8KHR5Qf0ipMMpkCnzwKiCIM9UKF+G6rrVAAXQE1pgCpitkEVsVEZQaiqU66AeRkN+EO+jlNTnZT/yPI1hRhCHiyE0aPzKqLcBxyjDWkGD+tKWqwGZegB0OCtzlkMixdVYArHgrhxWNtjSAKcFDTokH4O+CqlKv62zwJ5sJ+paHKMME1CalVZTHWSCGafaopJ/JjXRm1ZfUooLI6XxJNBE9JlUyk6FRkhV2spK6yrrxQ9WrFCZYKRtpm2oPr/ADtBqK5MjV3HkPabeoTLuT2SRRvrT1y31oUf3RjjjouuZntJAe9+pdQecP6174+44B5wDzgHngHPAOeAccA44B36DA18BazeZv/7EkZQAAAAASUVORK5CYII=">&nbsp;tels que :</p>
+<p>[ d_{ij} |x_i - x_j|_2 ]</p>
+<ul>
+<li class="fragment">Si la configuration exacte existe → <strong>distance euclidienne</strong></li>
+<li class="fragment">Sinon → <strong>distance non euclidienne</strong></li>
+</ul>
+</section>
+<section id="exemple-de-distance-non-euclidienne" class="slide level2 center">
+<h2>Exemple de distance non euclidienne</h2>
+<p>La <strong>distance radiale sur un cercle</strong> (longueur de l’arc entre deux points) :</p>
+<ul>
+<li class="fragment">Est bien une métrique,<br>
+</li>
+<li class="fragment">Mais ne peut pas être représentée exactement dans un espace euclidien ( ^p ).</li>
+</ul>
+<p>Le MDS cherche une configuration <strong>approchée</strong> minimisant l’écart entre ( d_{ij} ) et ( |x_i - x_j|_2 ).</p>
+<p>Photo exemple dans le pdf FR</p>
+</section>
+<section id="mds-classique-idée-générale" class="slide level2 center">
+<h2>MDS classique : idée générale</h2>
+<p><strong>But :</strong> retrouver les coordonnées des points à partir d’une matrice de distances ( D = (d_{ij}) ) supposées <strong>euclidiennes</strong>.</p>
+<p>[ |x_i - x_j| d_{ij} ]</p>
+<p>Plutôt que de calculer ( X ) directement, on travaille avec la <strong>matrice de produits scalaires</strong> :</p>
+<p>[ B = X X’ ]</p>
+<p>Si ( X ) est centrée : [ B = - C D^{(2)} C ] où ( C = I - ’ ) est la <strong>matrice de centrage</strong>.</p>
+</section>
+<section id="étapes-du-calcul" class="slide level2 center">
+<h2>Étapes du calcul</h2>
+<ol type="1">
+<li class="fragment"><strong>Données d’entrée :</strong> la matrice des distances ( D = (d_{ij}) ).<br>
+</li>
+<li class="fragment"><strong>Centrage double :</strong> [ B = - C D^{(2)} C ]</li>
+<li class="fragment"><strong>Décomposition en valeurs propres :</strong> [ B = V V’ ]</li>
+<li class="fragment"><strong>Coordonnées finales :</strong> [ X = V ^{1/2} ]</li>
+</ol>
+<div class="fragment">
+<p>💡 <em>Pipeline du calcul :</em><br>
+<strong>Distances → Matrice B → Décomposition → Coordonnées (R²)</strong></p>
+</div>
+</section>
+<section id="réduction-des-dimensions" class="slide level2 center">
+<h2>Réduction des dimensions</h2>
+<p>Souvent, on garde seulement les <strong>p premières composantes</strong> correspondant aux plus grandes valeurs propres :</p>
+<p>[ X^{(p)} = V_p _p^{1/2} ]</p>
+<p>où : - ( _p ) = sous-matrice ( p p ) des plus grandes valeurs propres<br>
+- ( V_p ) = les colonnes associées de ( V )</p>
+<p>Les colonnes de ( X^{(p)} ) sont les <strong>axes principaux</strong> (comme en ACP).<br>
+On obtient une <strong>carte 2D/3D</strong> qui préserve au mieux les distances.</p>
+
+<img data-src="img/mds_2d_plot.png" style="width:65.0%" class="r-stretch quarto-figure-center"><p class="caption">Nuage de points MDS</p></section>
+<section id="résumé-mds-classique" class="slide level2 center">
+<h2>Résumé : MDS classique</h2>
+<p>- Conserve les <strong>distances euclidiennes</strong> autant que possible.<br>
+- Produit des <strong>coordonnées centrées</strong> et ordonnées par importance (variance).<br>
+- Permet une <strong>visualisation claire</strong> des relations entre objets.<br>
+- Proche de l’<strong>ACP</strong>, mais part d’une <strong>matrice de distances</strong>.</p>
+</section>
+<section id="exemples-mds-classique" class="slide level2 center">
+<h2>Exemples : MDS classique</h2>
+<p><em>(Voir les 3 exemples du PDF)</em><br>
+<img data-src="img/mds_examples.png" style="width:70.0%" alt="Exemples MDS"></p>
+</section>
+<section id="distance-scaling-mise-à-léchelle-des-distances" class="slide level2 center">
+<h2>Distance Scaling (mise à l’échelle des distances)</h2>
+<p>Le MDS classique cherche une configuration ( x_i ) telle que :</p>
+<p>[ d_{ij} _{ij} = |x_i - x_j|_2 ]</p>
+<p>La <strong>mise à l’échelle des distances</strong> (Distance Scaling) assouplit cette contrainte en autorisant une <strong>transformation monotone</strong> :</p>
+<p>[ <em>{ij}</em> f(d{ij}) ]</p>
+<p>où ( f ) est une fonction <strong>monotone croissante</strong>.</p>
+</section>
+<section id="types-de-mds" class="slide level2 center">
 <h2>Types de MDS</h2>
-<p>Le MDS n’est pas une seule méthode, mais une famille d’algorithmes visant à trouver une configuration optimale dans un espace de faible dimension (souvent p = 2 ou 3). Les principales méthodes MDS sont : 1. MDS classique (Classical MDS) 2. MDS métrique (Metric MDS) 3. MDS non métrique (Non-metric MDS)</p>
+<ul>
+<li class="fragment"><strong>MDS métrique :</strong> les dissimilarités ( d_{ij} ) sont <strong>quantitatives</strong><br>
+</li>
+<li class="fragment"><strong>MDS non métrique :</strong> les dissimilarités ( d_{ij} ) sont <strong>ordinales ou qualitatives</strong></li>
+</ul>
+<p><strong>Différence avec le MDS classique :</strong> - cMDS : solution <strong>analytique exacte</strong> - (Non-)MDS métrique : solution <strong>numérique</strong> via <strong>minimisation du stress</strong> : [ Stress = (d*{ij} - _{ij})^2 ]</p>
 </section>
-<section id="exemple-1" class="slide level2">
-<h2>Exemple 1 :</h2>
-<p>Étude de la perception des couleurs par la vision humaine (Ekman, 1954 ; Izenman §13.2.1). 14 couleurs, différant uniquement par leur teinte (longueurs d’onde de 434 à 674 µm). 31 personnes évaluent chaque paire de couleurs sur une échelle de 0 à 4 : 0 = aucune similarité, 4 = identiques. On obtient donc (14¦2) paires. On fait la moyenne des 31 notations pour chaque paire → cela donne une mesure de similarité. On la convertit ensuite en dissimilarité : dissimilarite =1-similarite</p>
-</section>
-<section class="slide level2">
+<section class="slide level2 center">
 
-<p>On obtient une matrice 14 × 14 de dissimilarités, symétrique, avec des zéros sur la diagonale. Le MDS cherche une configuration à deux dimensions représentant ces couleurs.</p>
-<p>Le MDS reconstruit le célèbre cercle des couleurs en deux dimensions, montrant que la perception humaine de la teinte est naturellement circulaire.</p>
-</section>
-<section class="slide level2">
-
-<p>On peut se demander si les dissimilarités données sont vraiment des distances, et si elles peuvent être interprétées comme des distances euclidiennes.</p>
-<p>Étant donnée une matrice de dissimilarités D=(d_ij), le MDS cherche à trouver des points x_1,…,x_n∈R^p tels que : d_ij≈∥x_i-x_j ∥_2</p>
-<pre><code>S’il existe une configuration exacte, on parle de distance euclidienne.
-Mais parfois, il n’existe aucune configuration qui reproduise exactement d_ij
-On parle alors de distance non euclidienne.
-
-Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre deux points) est bien une métrique,</code></pre>
-<p>mais ne peut pas être représentée exactement dans un espace euclidien R^p.</p>
-<pre><code>Le MDS essaie malgré tout de trouver une configuration approchée minimisant l’écart entre</code></pre>
-<p>d_ij et ∥x_i-x_j ∥_2.</p>
-</section>
-<section class="slide level2">
-
-</section>
-<section class="slide level2">
-
-</section>
-<section class="slide level2">
-
-<pre><code></code></pre>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
 
 </section>
     </div>
@@ -244,7 +307,7 @@ Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre de
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -273,7 +336,7 @@ Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre de
         disableLayout: false,
 
         // Vertical centering of slides
-        center: false,
+        center: true,
 
         // Enables touch navigation on devices with touch input
         touch: true,
@@ -349,7 +412,7 @@ Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre de
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -403,44 +466,6 @@ Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre de
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
