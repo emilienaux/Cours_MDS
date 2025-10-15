@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+
+	
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<meta name="generator" content="Adobe GoLive"><title>MDS classique avec R</title></head><body bgcolor="#ffffff">
+		<h3>MDS classique avec R</h3>
+		<h4>En Français : échelles multidimensionnelles, positionnement multidimensionnel</h4>
+		<p><em>Source : Borg, I., Groenen, P., Modern Multidimensional Scaling : Theory and Applications, Second Edition, Springer, 2005.</em></p>
+		<h4>Principe de la méthode :</h4>
+		<p>On
+désigne sous le terme de MDS (multidimensional scaling), un ensemble de
+techniques permettant de représenter les données d'une matrice de
+proximités entre objets à l'aide de modèles de distances spatiales.
+Dans sa version la plus simple, la méthode MDS permet de retrouver une
+carte bi-dimensionnelle à partir d'un ensemble de distances mutuelles
+entre lieux.</p>
+		<p>Le MDS classique est une méthode est fondée sur
+les travaux de Torgerson (1952, 1958) et Gower. Elle est appelée
+Classical MDS, AFTD (analyse factorielle sur un tableau de distances),
+Principal Coordinates Analysis, ou encore Analyse du triple (Benzécri).</p>
+		<p>Principe
+mathématique : on calcule les valeurs propres et vecteurs propres d'une
+matrice calculée à partie de la matrice de proximités, afin de
+déterminer la "meilleure" projection de l'ensemble d'objets dans un
+sous-espace de dimension donnée.</p>
+		<p><strong>Algorithme :</strong></p>
+		<p>On
+dispose au départ de la matrice n x n des "distances" mutuelles entre n
+objets. On souhaite obtenir une représentation de ces n objets dans un
+espace de dimension m en respectant "au mieux" les distances entre les
+objets. La dimension m de l'espace n'est pas fixée a priori.</p>
+		<ul>
+			<li>On part d'une matrice n x n de distances mutuelles entre objets : P
+			</li><li>On calcule P2, matrice n x n des carrés des distances précédentes
+			</li><li>On effectue une opération de double centrage : B = -0.5 * J * P2 *J<br>
+				où J = In - 1/n 1n, In est la matrice unité d'ordre n, 1n est la matrice n x n dont tous les coefficients sont égaux à 1.
+			</li><li>On
+calcule les valeurs propres et vecteurs propres (unitaires) de la
+matrice B. On conserve les m plus grandes valeurs propres. Soit Lm la
+matrice diagonale de ces m valeurs propres, et Em la matrice des
+vecteurs propres unitaires correspondants. Soit Lm^.5 la matrice des
+racines carrées de ces valeurs propres.</li><li>X = Em * Lm^.5 fournit
+une solution du problème posé. Les coordonnées des n points dans
+l'espace de dimension n sont les lignes de la matrice solution X
+(matrice à n lignes et m colonnes).</li></ul>
+		<p><strong>Remarque :</strong></p>
+		<p>Si
+la matrice P de départ est une matrice de distances euclidiennes, le
+MDS classique fournit en résultat les coordonnées des n points, à une
+rotation près, dans un repère dont l'origine est le centre de gravité
+des points.</p>
+		<p><strong>Propriété de minimalité de la solution :</strong></p>
+		<p>On montre que la solution trouvée minimise la fonction de perte (appelée <em>Strain</em>, littéralement <em>Contrainte</em>, par Carrol et Chang) :</p>
+		<div align="center">
+			<p>L(X) = || XX' - B ||</p>
+		</div>
+		<p>où
+X représente la matrice d'un système de n points (les variables) dans
+un espace de dimension n et ou la norme utilisée pour la matrice est la
+norme de Fröbenius, c'est-à-dire la racine carrée de la somme des
+carrés de tous les coefficients de la matrice. C'est en ce sens que la
+solution trouvée respecte "au mieux" les proximités entre objets. En
+particulier, si la matrice de départ est une matrice de distances
+euclidiennes, on obtient : Strain = 0.</p>
+		<p><strong>Variante :</strong></p>
+		<p>On
+fixe a priori le nombre m de valeurs propres à garder. On conserve
+alors les m plus grandes valeurs propres où les valeurs propres
+strictement positives, si ces dernières sont en nombre inférieur à m.
+Une propriété intéressante du MDS classique est que les dimensions sont
+emboîtées. Ainsi les deux premières dimensions d'une solution avec m=3
+sont les mêmes que celles d'une solution avec m=2. Cette propriété ne
+se retrouve pas pour le MDS métrique (visant à minimiser le Stress).</p>
+		<p>La
+solution trouvée déforme alors "au minimum" les distances entre objets,
+tout en respectant la contrainte sur la dimension de l'espace des
+solutions.</p>
+		<p><strong>Remarque.</strong></p>
+		<p>Si P est une
+matrice de distances, le MDS métrique tel qu'il est décrit ici est
+équivalent à l'ACP avec une métrique M=I, comme on peut s'en rendre
+compte sur l'exemple "notes d'élèves" (cf exemple 2).</p>
+		<h4>Exemple 1 :</h4>
+		<p>Enoncé :</p>
+		<p>Source : Handbook of Statistics - Elsevier 2007</p>
+		<p>On se donne les distances à vol d'oiseau entre 10 villes américaines.<br>
+			Les données se présentent sous la forme suivante :</p>
+		<div align="center">
+			<table border="1" cellpadding="0" cellspacing="0" width="550">
+				<tbody><tr height="13">
+					<td height="13" width="50"><br>
+</td>
+					<td width="50">Atl</td>
+					<td width="50">Chi</td>
+					<td width="50">Den</td>
+					<td width="50">Hou</td>
+					<td width="50">LA</td>
+					<td width="50">Mia</td>
+					<td width="50">NY</td>
+					<td width="50">SF</td>
+					<td width="50">Sea</td>
+					<td width="50">DC</td>
+				</tr>
+				<tr height="13">
+					<td height="13">Atl</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="587.0" align="right">587</td>
+					<td x:num="1212.0" align="right">1212</td>
+					<td x:num="701.0" align="right">701</td>
+					<td x:num="1936.0" align="right">1936</td>
+					<td x:num="604.0" align="right">604</td>
+					<td x:num="748.0" align="right">748</td>
+					<td x:num="2139.0" align="right">2139</td>
+					<td x:num="2182.0" align="right">2182</td>
+					<td x:num="543.0" align="right">543</td>
+				</tr>
+				<tr height="13">
+					<td height="13">Chi</td>
+					<td x:num="587.0" align="right">587</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="920.0" align="right">920</td>
+					<td x:num="940.0" align="right">940</td>
+					<td x:num="1745.0" align="right">1745</td>
+					<td x:num="1188.0" align="right">1188</td>
+					<td x:num="713.0" align="right">713</td>
+					<td x:num="1858.0" align="right">1858</td>
+					<td x:num="1737.0" align="right">1737</td>
+					<td x:num="597.0" align="right">597</td>
+				</tr>
+				<tr height="13">
+					<td height="13">Den</td>
+					<td x:num="1212.0" align="right">1212</td>
+					<td x:num="920.0" align="right">920</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="879.0" align="right">879</td>
+					<td x:num="831.0" align="right">831</td>
+					<td x:num="1726.0" align="right">1726</td>
+					<td x:num="1631.0" align="right">1631</td>
+					<td x:num="949.0" align="right">949</td>
+					<td x:num="1021.0" align="right">1021</td>
+					<td x:num="1494.0" align="right">1494</td>
+				</tr>
+				<tr height="13">
+					<td height="13">Hou</td>
+					<td x:num="701.0" align="right">701</td>
+					<td x:num="940.0" align="right">940</td>
+					<td x:num="879.0" align="right">879</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="1374.0" align="right">1374</td>
+					<td x:num="968.0" align="right">968</td>
+					<td x:num="1420.0" align="right">1420</td>
+					<td x:num="1645.0" align="right">1645</td>
+					<td x:num="1891.0" align="right">1891</td>
+					<td x:num="1220.0" align="right">1220</td>
+				</tr>
+				<tr height="13">
+					<td height="13">LA</td>
+					<td x:num="1936.0" align="right">1936</td>
+					<td x:num="1745.0" align="right">1745</td>
+					<td x:num="831.0" align="right">831</td>
+					<td x:num="1374.0" align="right">1374</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="2339.0" align="right">2339</td>
+					<td x:num="2451.0" align="right">2451</td>
+					<td x:num="347.0" align="right">347</td>
+					<td x:num="959.0" align="right">959</td>
+					<td x:num="2300.0" align="right">2300</td>
+				</tr>
+				<tr height="13">
+					<td height="13">Mia</td>
+					<td x:num="604.0" align="right">604</td>
+					<td x:num="1188.0" align="right">1188</td>
+					<td x:num="1726.0" align="right">1726</td>
+					<td x:num="968.0" align="right">968</td>
+					<td x:num="2339.0" align="right">2339</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="1092.0" align="right">1092</td>
+					<td x:num="2594.0" align="right">2594</td>
+					<td x:num="2734.0" align="right">2734</td>
+					<td x:num="923.0" align="right">923</td>
+				</tr>
+				<tr height="13">
+					<td height="13">NY</td>
+					<td x:num="748.0" align="right">748</td>
+					<td x:num="713.0" align="right">713</td>
+					<td x:num="1631.0" align="right">1631</td>
+					<td x:num="1420.0" align="right">1420</td>
+					<td x:num="2451.0" align="right">2451</td>
+					<td x:num="1092.0" align="right">1092</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="2571.0" align="right">2571</td>
+					<td x:num="2408.0" align="right">2408</td>
+					<td x:num="205.0" align="right">205</td>
+				</tr>
+				<tr height="13">
+					<td height="13">SF</td>
+					<td x:num="2139.0" align="right">2139</td>
+					<td x:num="1858.0" align="right">1858</td>
+					<td x:num="949.0" align="right">949</td>
+					<td x:num="1645.0" align="right">1645</td>
+					<td x:num="347.0" align="right">347</td>
+					<td x:num="2594.0" align="right">2594</td>
+					<td x:num="2571.0" align="right">2571</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="678.0" align="right">678</td>
+					<td x:num="2442.0" align="right">2442</td>
+				</tr>
+				<tr height="13">
+					<td height="13">Sea</td>
+					<td x:num="2182.0" align="right">2182</td>
+					<td x:num="1737.0" align="right">1737</td>
+					<td x:num="1021.0" align="right">1021</td>
+					<td x:num="1891.0" align="right">1891</td>
+					<td x:num="959.0" align="right">959</td>
+					<td x:num="2734.0" align="right">2734</td>
+					<td x:num="2408.0" align="right">2408</td>
+					<td x:num="678.0" align="right">678</td>
+					<td x:num="0.0" align="right">0</td>
+					<td x:num="2329.0" align="right">2329</td>
+				</tr>
+				<tr height="13">
+					<td height="13">DC</td>
+					<td x:num="543.0" align="right">543</td>
+					<td x:num="597.0" align="right">597</td>
+					<td x:num="1494.0" align="right">1494</td>
+					<td x:num="1220.0" align="right">1220</td>
+					<td x:num="2300.0" align="right">2300</td>
+					<td x:num="923.0" align="right">923</td>
+					<td x:num="205.0" align="right">205</td>
+					<td x:num="2442.0" align="right">2442</td>
+					<td x:num="2329.0" align="right">2329</td>
+					<td x:num="0.0" align="right">0</td>
+				</tr>
+			</tbody></table>
+		</div>
+		<p></p>
+		<div align="center">
+			
+		</div>
+		<p>Ces données sont enregistrées au format .csv d'Excel dans le fichier : <a href="../../Donnees-notes/MDS/FlyingMileage.csv">FlyingMileage.csv</a> avec la structure indiquée ci-dessus.</p>
+		<p>On peut les charger dans R à l'aide de la commande :</p>
+		<p>&gt;  <tt>distances &lt;- read.csv2("FlyingMileage.csv")</tt></p>
+		<p>N.B.
+read.csv2 permet de lire des données au format "table", avec les
+spécifications par défaut suivantes : séparateur = ";", séparateur
+décimal = ",".</p>
+		<h4>Calcul des coordonnées de la représentation</h4>
+		<p>On utilise la commande cmdscale, qui se trouve dans le package MASS.</p>
+		<p><tt>&gt; library(MASS)</tt></p>
+		<p><tt>&gt; cmdscale(distances[,2:11])<br>
+				          [,1]       [,2]<br>
+				Atl  -718.7594  142.99427<br>
+				Chi  -382.0558 -340.83962<br>
+				Den   481.6023  -25.28504<br>
+				Hou  -161.4663  572.76991<br>
+				LA   1203.7380  390.10029<br>
+				Mia -1133.5271  581.90731<br>
+				NY  -1072.2357 -519.02423<br>
+				SF   1420.6033  112.58920<br>
+				Sea  1341.7225 -579.73928<br>
+				DC   -979.6220 -335.47281<br>
+			</tt></p>
+		<h4>Représentation graphique</h4>
+		<p>On voit que l'orientation des axes est à l'opposé des conventions utilisées pour les cartes de géographie.</p>
+		<p>On prend donc les opposés des coordonnées sur les deux axes :</p>
+		<p><tt>&gt; Y &lt;- - cmdscale(distances[,2:11])[,2]<br>
+				&gt; X &lt;- - cmdscale(distances[,2:11])[,1]<br>
+			</tt></p>
+		<p>On trace ensuite le graphique et les étiquettes des points :</p>
+		<p><tt>&gt; plot(X,Y,type="p")<br>
+				&gt; text(X,Y,distances[,1],pos=1,cex=0.8)<br>
+			</tt></p>
+		<p>Résultat obtenu :</p>
+		<div align="center">
+			<p><img src="Mileage.gif" alt="" border="0" height="500" width="635"></p>
+		</div>
+		<h5>Variantes et compléments :</h5>
+		<p>On peut choisir la dimension de l'espace dans lequel le résultat est recherché.</p>
+		<p>Pour une solution en dimension 3 :</p>
+		<p><tt>&gt; cmdscale(distances[,2:11],k=3)</tt></p>
+		<h4>Exemple 2 :</h4>
+		<p>On se donne les notes de 9 sujets dans 5 matières. Les données, après centrage et réduction, sont les suivantes (cf fichier <a href="../../Donnees-notes/MDS/Mini-ACP.csv">Mini-ACP.csv</a>):</p>
+		<div align="center">
+			<table border="1" cellpadding="0" cellspacing="0" width="450">
+				<tbody><tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Sujet</div>
+					</td>
+					<td width="75">
+						<div align="center">
+							Math</div>
+					</td>
+					<td width="75">
+						<div align="center">
+							Sciences</div>
+					</td>
+					<td width="75">
+						<div align="center">
+							Francais</div>
+					</td>
+					<td width="75">
+						<div align="center">
+							Latin</div>
+					</td>
+					<td width="75">
+						<div align="center">
+							Musique</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Jean</div>
+					</td>
+					<td x:num="-1.0865" width="75">
+						<div align="center">
+							-1,0865</div>
+					</td>
+					<td x:num="-1.2817" width="75">
+						<div align="center">
+							-1,2817</div>
+					</td>
+					<td x:num="-1.5037" width="75">
+						<div align="center">
+							-1,5037</div>
+					</td>
+					<td x:num="-1.6252" width="75">
+						<div align="center">
+							-1,6252</div>
+					</td>
+					<td x:num="-1.019" width="75">
+						<div align="center">
+							-1,019</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Aline</div>
+					</td>
+					<td x:num="-0.4939" width="75">
+						<div align="center">
+							-0,4939</div>
+					</td>
+					<td x:num="-0.613" width="75">
+						<div align="center">
+							-0,613</div>
+					</td>
+					<td x:num="-0.6399" width="75">
+						<div align="center">
+							-0,6399</div>
+					</td>
+					<td x:num="-0.7223" width="75">
+						<div align="center">
+							-0,7223</div>
+					</td>
+					<td x:num="-0.6794" width="75">
+						<div align="center">
+							-0,6794</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Annie</div>
+					</td>
+					<td x:num="-1.0865" width="75">
+						<div align="center">
+							-1,0865</div>
+					</td>
+					<td x:num="-0.9474" width="75">
+						<div align="center">
+							-0,9474</div>
+					</td>
+					<td x:num="0.2239" width="75">
+						<div align="center">
+							0,2239</div>
+					</td>
+					<td x:num="-0.1806" width="75">
+						<div align="center">
+							-0,1806</div>
+					</td>
+					<td x:num="0.0" width="75">
+						<div align="center">
+							0</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Monique</div>
+					</td>
+					<td x:num="1.4322" width="75">
+						<div align="center">
+							1,4322</div>
+					</td>
+					<td x:num="1.5604" width="75">
+						<div align="center">
+							1,5604</div>
+					</td>
+					<td x:num="1.5197" width="75">
+						<div align="center">
+							1,5197</div>
+					</td>
+					<td x:num="1.8058" width="75">
+						<div align="center">
+							1,8058</div>
+					</td>
+					<td x:num="-1.019" width="75">
+						<div align="center">
+							-1,019</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Didier</div>
+					</td>
+					<td x:num="1.284" width="75">
+						<div align="center">
+							1,284</div>
+					</td>
+					<td x:num="1.3932" width="75">
+						<div align="center">
+							1,3932</div>
+					</td>
+					<td x:num="0.5119" width="75">
+						<div align="center">
+							0,5119</div>
+					</td>
+					<td x:num="0.7223" width="75">
+						<div align="center">
+							0,7223</div>
+					</td>
+					<td x:num="-0.3397" width="75">
+						<div align="center">
+							-0,3397</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							André</div>
+					</td>
+					<td x:num="0.3951" width="75">
+						<div align="center">
+							0,3951</div>
+					</td>
+					<td x:num="0.0557" width="75">
+						<div align="center">
+							0,0557</div>
+					</td>
+					<td x:num="-1.3597" width="75">
+						<div align="center">
+							-1,3597</div>
+					</td>
+					<td x:num="-1.0835" width="75">
+						<div align="center">
+							-1,0835</div>
+					</td>
+					<td x:num="0.6794" width="75">
+						<div align="center">
+							0,6794</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Pierre</div>
+					</td>
+					<td x:num="-1.2347" width="75">
+						<div align="center">
+							-1,2347</div>
+					</td>
+					<td x:num="-0.9474" width="75">
+						<div align="center">
+							-0,9474</div>
+					</td>
+					<td x:num="1.0878" width="75">
+						<div align="center">
+							1,0878</div>
+					</td>
+					<td x:num="0.5417" width="75">
+						<div align="center">
+							0,5417</div>
+					</td>
+					<td x:num="-0.3397" width="75">
+						<div align="center">
+							-0,3397</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Brigitte</div>
+					</td>
+					<td x:num="0.9877" width="75">
+						<div align="center">
+							0,9877</div>
+					</td>
+					<td x:num="0.8916" width="75">
+						<div align="center">
+							0,8916</div>
+					</td>
+					<td x:num="-0.4959" width="75">
+						<div align="center">
+							-0,4959</div>
+					</td>
+					<td x:num="-0.1806" width="75">
+						<div align="center">
+							-0,1806</div>
+					</td>
+					<td x:num="0.3397" width="75">
+						<div align="center">
+							0,3397</div>
+					</td>
+				</tr>
+				<tr height="13">
+					<td height="13" width="75">
+						<div align="center">
+							Evelyne</div>
+					</td>
+					<td x:num="-0.1975" width="75">
+						<div align="center">
+							-0,1975</div>
+					</td>
+					<td x:num="-0.1115" width="75">
+						<div align="center">
+							-0,1115</div>
+					</td>
+					<td x:num="0.6559" width="75">
+						<div align="center">
+							0,6559</div>
+					</td>
+					<td x:num="0.7223" width="75">
+						<div align="center">
+							0,7223</div>
+					</td>
+					<td x:num="2.3778" width="75">
+						<div align="center">
+							2,3778</div>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+		<div align="left">
+			<p>On importe les données dans R :</p>
+			<p><tt>&gt; Mini &lt;- read.csv2("Mini-ACP.csv")<br>
+					&gt; Mini<br>
+					     Sujet   Math Sciences Francais  Latin Musique<br>
+					1     Jean -1.087  -1.2817   -1.504 -1.625   -1.02<br>
+					2    Aline -0.494  -0.6130   -0.640 -0.722   -0.68<br>
+					3    Annie -1.087  -0.9474    0.224 -0.181    0.00<br>
+					4  Monique  1.432   1.5604    1.520  1.806   -1.02<br>
+					5   Didier  1.284   1.3932    0.512  0.722   -0.34<br>
+					6 Andr&lt;8e&gt;  0.395   0.0557   -1.360 -1.083    0.68<br>
+					7   Pierre -1.235  -0.9474    1.088  0.542   -0.34<br>
+					8 Brigitte  0.988   0.8916   -0.496 -0.181    0.34<br>
+					9  Evelyne -0.198  -0.1115    0.656  0.722    2.38<br>
+				</tt></p>
+			<p>On isole les données numériques dans une matrice :<br>
+				<br>
+				<tt>&gt; MXM &lt;- MMM[,2:6]<br>
+				</tt></p>
+			<p>On calcule la matrice des distances euclidiennes entre les sujets :<br>
+				<br>
+				<tt>&gt; dxd &lt;- dist(MXM)<br>
+					&gt; dxd<br>
+					     1    2    3    4    5    6    7    8<br>
+					2 1.57                                   <br>
+					3 2.49 1.40                              <br>
+					4 5.94 4.43 4.39                         <br>
+					5 4.78 3.27 3.48 1.64                    <br>
+					6 2.68 1.93 2.64 4.78 3.22               <br>
+					7 3.47 2.31 1.19 3.96 3.49 3.65          <br>
+					8 3.74 2.41 2.88 3.24 1.62 1.65 3.44     <br>
+					9 4.89 3.67 2.85 4.35 3.44 3.25 3.06 2.95<br>
+				</tt><br>
+				On réalise le positionnement multidimensionnel :<br>
+				<tt>&gt; cmdscale(dxd,k=3)<br>
+					        [,1]   [,2]   [,3]<br>
+					 [1,] -2.786  0.676 -0.737<br>
+					 [2,] -1.263  0.330 -0.555<br>
+					 [3,] -1.017 -1.020 -0.288<br>
+					 [4,]  3.122  0.166 -1.144<br>
+					 [5,]  1.955  0.788 -0.189<br>
+					 [6,] -0.948  1.201  1.140<br>
+					 [7,] -0.325 -1.755 -0.909<br>
+					 [8,]  0.637  1.130  0.692<br>
+					 [9,]  0.623 -1.517  1.991<br>
+				</tt></p>
+			<p>Ces résultats sont identiques à ceux obtenus pour l'ACP. Cf. les fichiers :  <a href="../../Cours/PSY-M1-Ana-mult-1.doc">PSY-M1-Ana-mult-1.doc</a> ou <a href="../../Cours/PSY-M1-Ana-mult-1.pdf">PSY-M1-Ana-mult-1.pdf</a> . Les coordonnées des individus sur les 3 premiers axes factoriels sont rappelées ci-dessous :</p>
+			<div align="center">
+				<table border="1" cellpadding="0" cellspacing="0">
+					<tbody><tr>
+						<td valign="top" width="25">
+							<p>&nbsp;</p>
+						</td>
+						<td valign="top" width="103">
+							<p align="center">Fact. 1</p>
+						</td>
+						<td valign="top" width="103">
+							<p align="center">Fact. 2</p>
+						</td>
+						<td valign="top" width="103">
+							<p align="center">Fact. 3</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Sujet</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>1</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-2,7857</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,6765</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,7368</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Jean</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>2</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,2625</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,3303</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,5549</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Aline</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>3</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,0167</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,0198</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,2881</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Annie</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>4</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">3,1222</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,1659</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">1,1442</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Monique</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>5</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">1,9551</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,7879</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,1892</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Didier</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>6</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-0,9477</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">1,2014</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,1401</p>
+						</td>
+						<td valign="top" width="69">
+							<p>André</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>7</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-0,3250</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,7548</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,9095</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Pierre</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>8</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,6374</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">1,1298</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-0,6919</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Brigitte</p>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" width="25">
+							<p>9</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">0,6231</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,5173</p>
+						</td>
+						<td valign="bottom" width="103">
+							<p align="center">-1,9909</p>
+						</td>
+						<td valign="top" width="69">
+							<p>Evelyne</p>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<div align="left">
+				<h4>Exemple 3 : MDS classique "à la main"</h4>
+				<p><tt># Le MDS classique "à la main"<br>
+						# Distances entre 4 villes du Danemark<br>
+						P &lt;- matrix(c(0,93,82,133,93,0,52,60,82,52,0,111,133,60,111,0),nrow=4)<br>
+						# Matrice des distances au carré<br>
+						P2 &lt;- P*P<br>
+						# Matrice J = I - 1/n 1<br>
+						Un &lt;- matrix(c(rep(1,16)),nrow=4)<br>
+						I4 &lt;- matrix(c(rep(c(1,0,0,0,0),3),1),nrow=4)<br>
+						J &lt;- I4 - .25 * Un<br>
+						# Matrice B<br>
+						B &lt;- -0.5 * J %*% P2 %*% J<br>
+						# Valeurs propres et vecteurs propres<br>
+						DIAG &lt;- eigen(B)<br>
+						# Matrice Lambda^1/2 pour 2 dimensions<br>
+						LPLUS &lt;- matrix(c(sqrt(DIAG$values[1]),0,0,sqrt(DIAG$values[2])),nrow=2)<br>
+						# Vecteurs propres correspondants<br>
+						CPLUS &lt;- DIAG$vectors[,1:2]<br>
+						<br>
+						# Solution<br>
+						X &lt;- CPLUS %*% LPLUS<br>
+						X<br>
+						#</tt><tt> [,1] [,2]<br>
+						#[1,] 62.83108 32.97448<br>
+						#[2,] -18.40289 -12.02697<br>
+						#[3,] 24.96018 -39.71091<br>
+						#[4,] -69.38837 18.76340<br>
+						<br>
+						# Vérification<br>
+						cmdscale(P)</tt></p>
+			</div>
+		</div>
+		<p><tt> </tt></p>
+	</body></html>

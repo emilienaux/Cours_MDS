@@ -1,21 +1,82 @@
 ---
-title: "Présentation_MDS"
+title: "Analyse Multidimensionnelle des Similarités (MDS)"
+subtitle: "Application à une analyse sensorielle de fraises"
+author: Valentine J, Vadim L, Emilie N
 format: revealjs
 editor: visual
 ---
 
 ## Introduction
 
-Bienvenue à ce cours sur la **méthode MDS** (MultiDimensional Scaling).
+---
+
+## Objectif MDS
+
+À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une carte qui préserve les distances entre les points.
+	On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).
+	La carte reconstruite fournit des coordonnées x_i=(x_i1,x_i2) ,
+et la distance naturelle est ∥x_i-x_j ∥_2.
+
+
 
 ---
 
-## Objectifs du cours
+## Types de MDS
 
-- Comprendre le principe du MDS  
-- Savoir appliquer la méthode avec R  
-- Interpréter la carte perceptuelle obtenue
+Le MDS n’est pas une seule méthode, mais une famille d’algorithmes visant à trouver une configuration optimale dans un espace de faible dimension (souvent p = 2 ou 3).
+Les principales méthodes MDS sont :
+1.	MDS classique (Classical MDS)
+2.	MDS métrique (Metric MDS)
+3.	MDS non métrique (Non-metric MDS)
+
 ---
+
+## Exemple 1 : 
+
+Étude de la perception des couleurs par la vision humaine (Ekman, 1954 ; Izenman §13.2.1).
+	14 couleurs, différant uniquement par leur teinte (longueurs d’onde de 434 à 674 µm).
+	31 personnes évaluent chaque paire de couleurs sur une échelle de 0 à 4 :
+	0 = aucune similarité,
+	4 = identiques.
+	On obtient donc (14¦2) paires.
+	On fait la moyenne des 31 notations pour chaque paire → cela donne une mesure de similarité.
+	On la convertit ensuite en dissimilarité :
+dissimilarite =1-similarite
+
+---
+
+On obtient une matrice 14 × 14 de dissimilarités, symétrique, avec des zéros sur la diagonale.
+Le MDS cherche une configuration à deux dimensions représentant ces couleurs.
+
+Le MDS reconstruit le célèbre cercle des couleurs en deux dimensions,
+montrant que la perception humaine de la teinte est naturellement circulaire.
+
+---
+
+On peut se demander si les dissimilarités données sont vraiment des distances, et si elles peuvent être interprétées comme des distances euclidiennes.
+ 
+Étant donnée une matrice de dissimilarités D=(d_ij), le MDS cherche à trouver
+des points x_1,…,x_n∈R^p tels que :
+d_ij≈∥x_i-x_j ∥_2
+
+	S’il existe une configuration exacte, on parle de distance euclidienne.
+	Mais parfois, il n’existe aucune configuration qui reproduise exactement d_ij
+	On parle alors de distance non euclidienne.
+
+	Par exemple : La distance radiale sur un cercle (la longueur de l’arc entre deux points) est bien une métrique,
+mais ne peut pas être représentée exactement dans un espace euclidien R^p.
+ 
+	Le MDS essaie malgré tout de trouver une configuration approchée minimisant l’écart entre
+d_ij et ∥x_i-x_j ∥_2.
+
+---
+
+---
+
+---
+
+```{}
+```
 
 ```{r}
 1 + 1
