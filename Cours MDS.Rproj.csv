@@ -1,0 +1,961 @@
+NR;CJ;ProductName;AttributeName;Note
+1;J2;FRAISE A;Taille;5
+1;J2;FRAISE A;Couleur;7
+1;J2;FRAISE A;Odeur;4
+1;J2;FRAISE A;Ferme ;5
+1;J2;FRAISE A;Juteux;7
+1;J2;FRAISE A;Fondant;3
+1;J2;FRAISE A;Sucree;3
+1;J2;FRAISE A;Acide;5
+1;J2;FRAISE A;Arome ;5
+1;J2;FRAISE A;Fraise bois;3
+1;J2;FRAISE B;Taille;7
+1;J2;FRAISE B;Couleur;5
+1;J2;FRAISE B;Odeur;1
+1;J2;FRAISE B;Ferme ;4
+1;J2;FRAISE B;Juteux;8
+1;J2;FRAISE B;Fondant;4
+1;J2;FRAISE B;Sucree;6
+1;J2;FRAISE B;Acide;5
+1;J2;FRAISE B;Arome ;7
+1;J2;FRAISE B;Fraise bois;4
+1;J2;FRAISE C;Taille;5
+1;J2;FRAISE C;Couleur;6
+1;J2;FRAISE C;Odeur;4
+1;J2;FRAISE C;Ferme ;2
+1;J2;FRAISE C;Juteux;8
+1;J2;FRAISE C;Fondant;9
+1;J2;FRAISE C;Sucree;5
+1;J2;FRAISE C;Acide;3
+1;J2;FRAISE C;Arome ;6
+1;J2;FRAISE C;Fraise bois;5
+1;J2;FRAISE D;Taille;6
+1;J2;FRAISE D;Couleur;6
+1;J2;FRAISE D;Odeur;1
+1;J2;FRAISE D;Ferme ;4
+1;J2;FRAISE D;Juteux;6
+1;J2;FRAISE D;Fondant;3
+1;J2;FRAISE D;Sucree;6
+1;J2;FRAISE D;Acide;3
+1;J2;FRAISE D;Arome ;7
+1;J2;FRAISE D;Fraise bois;5
+1;J3;FRAISE A;Taille;4
+1;J3;FRAISE A;Couleur;7
+1;J3;FRAISE A;Odeur;7
+1;J3;FRAISE A;Ferme ;6
+1;J3;FRAISE A;Juteux;7
+1;J3;FRAISE A;Fondant;8
+1;J3;FRAISE A;Sucree;10
+1;J3;FRAISE A;Acide;3
+1;J3;FRAISE A;Arome ;10
+1;J3;FRAISE A;Fraise bois;6
+1;J3;FRAISE B;Taille;9
+1;J3;FRAISE B;Couleur;8
+1;J3;FRAISE B;Odeur;7
+1;J3;FRAISE B;Ferme ;2
+1;J3;FRAISE B;Juteux;7
+1;J3;FRAISE B;Fondant;9
+1;J3;FRAISE B;Sucree;10
+1;J3;FRAISE B;Acide;4
+1;J3;FRAISE B;Arome ;9
+1;J3;FRAISE B;Fraise bois;8
+1;J3;FRAISE C;Taille;10
+1;J3;FRAISE C;Couleur;8
+1;J3;FRAISE C;Odeur;9
+1;J3;FRAISE C;Ferme ;5
+1;J3;FRAISE C;Juteux;6
+1;J3;FRAISE C;Fondant;6
+1;J3;FRAISE C;Sucree;4
+1;J3;FRAISE C;Acide;4
+1;J3;FRAISE C;Arome ;5
+1;J3;FRAISE C;Fraise bois;8
+1;J3;FRAISE D;Taille;7
+1;J3;FRAISE D;Couleur;8
+1;J3;FRAISE D;Odeur;0
+1;J3;FRAISE D;Ferme ;6
+1;J3;FRAISE D;Juteux;6
+1;J3;FRAISE D;Fondant;7
+1;J3;FRAISE D;Sucree;3
+1;J3;FRAISE D;Acide;5
+1;J3;FRAISE D;Arome ;2
+1;J3;FRAISE D;Fraise bois;5
+1;J4;FRAISE A;Taille;3
+1;J4;FRAISE A;Couleur;9
+1;J4;FRAISE A;Odeur;0
+1;J4;FRAISE A;Ferme ;6
+1;J4;FRAISE A;Juteux;7
+1;J4;FRAISE A;Fondant;7
+1;J4;FRAISE A;Sucree;7
+1;J4;FRAISE A;Acide;7
+1;J4;FRAISE A;Arome ;6
+1;J4;FRAISE A;Fraise bois;6
+1;J4;FRAISE B;Taille;9
+1;J4;FRAISE B;Couleur;8
+1;J4;FRAISE B;Odeur;7
+1;J4;FRAISE B;Ferme ;6
+1;J4;FRAISE B;Juteux;7
+1;J4;FRAISE B;Fondant;9
+1;J4;FRAISE B;Sucree;6
+1;J4;FRAISE B;Acide;8
+1;J4;FRAISE B;Arome ;7
+1;J4;FRAISE B;Fraise bois;9
+1;J4;FRAISE C;Taille;6
+1;J4;FRAISE C;Couleur;8
+1;J4;FRAISE C;Odeur;6
+1;J4;FRAISE C;Ferme ;4
+1;J4;FRAISE C;Juteux;7
+1;J4;FRAISE C;Fondant;7
+1;J4;FRAISE C;Sucree;7
+1;J4;FRAISE C;Acide;3
+1;J4;FRAISE C;Arome ;7
+1;J4;FRAISE C;Fraise bois;6
+1;J4;FRAISE D;Taille;5
+1;J4;FRAISE D;Couleur;8
+1;J4;FRAISE D;Odeur;1
+1;J4;FRAISE D;Ferme ;4
+1;J4;FRAISE D;Juteux;7
+1;J4;FRAISE D;Fondant;5
+1;J4;FRAISE D;Sucree;3
+1;J4;FRAISE D;Acide;6
+1;J4;FRAISE D;Arome ;6
+1;J4;FRAISE D;Fraise bois;7
+1;J5;FRAISE A;Taille;5
+1;J5;FRAISE A;Couleur;8
+1;J5;FRAISE A;Odeur;7
+1;J5;FRAISE A;Ferme ;7
+1;J5;FRAISE A;Juteux;6
+1;J5;FRAISE A;Fondant;7
+1;J5;FRAISE A;Sucree;8
+1;J5;FRAISE A;Acide;4
+1;J5;FRAISE A;Arome ;7
+1;J5;FRAISE A;Fraise bois;6
+1;J5;FRAISE B;Taille;9
+1;J5;FRAISE B;Couleur;9
+1;J5;FRAISE B;Odeur;8
+1;J5;FRAISE B;Ferme ;7
+1;J5;FRAISE B;Juteux;8
+1;J5;FRAISE B;Fondant;6
+1;J5;FRAISE B;Sucree;8
+1;J5;FRAISE B;Acide;6
+1;J5;FRAISE B;Arome ;7
+1;J5;FRAISE B;Fraise bois;4
+1;J5;FRAISE C;Taille;7
+1;J5;FRAISE C;Couleur;7
+1;J5;FRAISE C;Odeur;6
+1;J5;FRAISE C;Ferme ;7
+1;J5;FRAISE C;Juteux;6
+1;J5;FRAISE C;Fondant;7
+1;J5;FRAISE C;Sucree;9
+1;J5;FRAISE C;Acide;7
+1;J5;FRAISE C;Arome ;9
+1;J5;FRAISE C;Fraise bois;7
+1;J5;FRAISE D;Taille;7
+1;J5;FRAISE D;Couleur;9
+1;J5;FRAISE D;Odeur;6
+1;J5;FRAISE D;Ferme ;6
+1;J5;FRAISE D;Juteux;7
+1;J5;FRAISE D;Fondant;7
+1;J5;FRAISE D;Sucree;9
+1;J5;FRAISE D;Acide;4
+1;J5;FRAISE D;Arome ;8
+1;J5;FRAISE D;Fraise bois;6
+1;J6;FRAISE A;Taille;4
+1;J6;FRAISE A;Couleur;10
+1;J6;FRAISE A;Odeur;7
+1;J6;FRAISE A;Ferme ;5
+1;J6;FRAISE A;Juteux;6
+1;J6;FRAISE A;Fondant;7
+1;J6;FRAISE A;Sucree;7
+1;J6;FRAISE A;Acide;5
+1;J6;FRAISE A;Arome ;8
+1;J6;FRAISE A;Fraise bois;9
+1;J6;FRAISE B;Taille;9
+1;J6;FRAISE B;Couleur;8
+1;J6;FRAISE B;Odeur;6
+1;J6;FRAISE B;Ferme ;5
+1;J6;FRAISE B;Juteux;6
+1;J6;FRAISE B;Fondant;8
+1;J6;FRAISE B;Sucree;6
+1;J6;FRAISE B;Acide;3
+1;J6;FRAISE B;Arome ;7
+1;J6;FRAISE B;Fraise bois;3
+1;J6;FRAISE C;Taille;7
+1;J6;FRAISE C;Couleur;9
+1;J6;FRAISE C;Odeur;9
+1;J6;FRAISE C;Ferme ;3
+1;J6;FRAISE C;Juteux;9
+1;J6;FRAISE C;Fondant;9
+1;J6;FRAISE C;Sucree;8
+1;J6;FRAISE C;Acide;2
+1;J6;FRAISE C;Arome ;9
+1;J6;FRAISE C;Fraise bois;8
+1;J6;FRAISE D;Taille;5
+1;J6;FRAISE D;Couleur;10
+1;J6;FRAISE D;Odeur;4
+1;J6;FRAISE D;Ferme ;2
+1;J6;FRAISE D;Juteux;7
+1;J6;FRAISE D;Fondant;9
+1;J6;FRAISE D;Sucree;9
+1;J6;FRAISE D;Acide;0
+1;J6;FRAISE D;Arome ;9
+1;J6;FRAISE D;Fraise bois;9
+1;J8;FRAISE A;Taille;6
+1;J8;FRAISE A;Couleur;9
+1;J8;FRAISE A;Odeur;7
+1;J8;FRAISE A;Ferme ;5
+1;J8;FRAISE A;Juteux;7
+1;J8;FRAISE A;Fondant;7
+1;J8;FRAISE A;Sucree;4
+1;J8;FRAISE A;Acide;4
+1;J8;FRAISE A;Arome ;6
+1;J8;FRAISE A;Fraise bois;6
+1;J8;FRAISE B;Taille;10
+1;J8;FRAISE B;Couleur;6
+1;J8;FRAISE B;Odeur;5
+1;J8;FRAISE B;Ferme ;4
+1;J8;FRAISE B;Juteux;7
+1;J8;FRAISE B;Fondant;6
+1;J8;FRAISE B;Sucree;6
+1;J8;FRAISE B;Acide;3
+1;J8;FRAISE B;Arome ;6
+1;J8;FRAISE B;Fraise bois;3
+1;J8;FRAISE C;Taille;7
+1;J8;FRAISE C;Couleur;6
+1;J8;FRAISE C;Odeur;5
+1;J8;FRAISE C;Ferme ;6
+1;J8;FRAISE C;Juteux;5
+1;J8;FRAISE C;Fondant;5
+1;J8;FRAISE C;Sucree;5
+1;J8;FRAISE C;Acide;2
+1;J8;FRAISE C;Arome ;7
+1;J8;FRAISE C;Fraise bois;6
+1;J8;FRAISE D;Taille;3
+1;J8;FRAISE D;Couleur;7
+1;J8;FRAISE D;Odeur;1
+1;J8;FRAISE D;Ferme ;4
+1;J8;FRAISE D;Juteux;7
+1;J8;FRAISE D;Fondant;6
+1;J8;FRAISE D;Sucree;6
+1;J8;FRAISE D;Acide;2
+1;J8;FRAISE D;Arome ;7
+1;J8;FRAISE D;Fraise bois;5
+1;J9;FRAISE A;Taille;6
+1;J9;FRAISE A;Couleur;8
+1;J9;FRAISE A;Odeur;5
+1;J9;FRAISE A;Ferme ;4
+1;J9;FRAISE A;Juteux;6
+1;J9;FRAISE A;Fondant;3
+1;J9;FRAISE A;Sucree;4
+1;J9;FRAISE A;Acide;7
+1;J9;FRAISE A;Arome ;6
+1;J9;FRAISE A;Fraise bois;3
+1;J9;FRAISE B;Taille;8
+1;J9;FRAISE B;Couleur;7
+1;J9;FRAISE B;Odeur;5
+1;J9;FRAISE B;Ferme ;3
+1;J9;FRAISE B;Juteux;7
+1;J9;FRAISE B;Fondant;7
+1;J9;FRAISE B;Sucree;3
+1;J9;FRAISE B;Acide;7
+1;J9;FRAISE B;Arome ;4
+1;J9;FRAISE B;Fraise bois;4
+1;J9;FRAISE C;Taille;6
+1;J9;FRAISE C;Couleur;6
+1;J9;FRAISE C;Odeur;1
+1;J9;FRAISE C;Ferme ;5
+1;J9;FRAISE C;Juteux;7
+1;J9;FRAISE C;Fondant;8
+1;J9;FRAISE C;Sucree;3
+1;J9;FRAISE C;Acide;9
+1;J9;FRAISE C;Arome ;6
+1;J9;FRAISE C;Fraise bois;5
+1;J9;FRAISE D;Taille;8
+1;J9;FRAISE D;Couleur;8
+1;J9;FRAISE D;Odeur;5
+1;J9;FRAISE D;Ferme ;3
+1;J9;FRAISE D;Juteux;8
+1;J9;FRAISE D;Fondant;8
+1;J9;FRAISE D;Sucree;9
+1;J9;FRAISE D;Acide;2
+1;J9;FRAISE D;Arome ;6
+1;J9;FRAISE D;Fraise bois;4
+1;J10;FRAISE A;Taille;2
+1;J10;FRAISE A;Couleur;10
+1;J10;FRAISE A;Odeur;8
+1;J10;FRAISE A;Ferme ;6
+1;J10;FRAISE A;Juteux;8
+1;J10;FRAISE A;Fondant;9
+1;J10;FRAISE A;Sucree;2
+1;J10;FRAISE A;Acide;7
+1;J10;FRAISE A;Arome ;9
+1;J10;FRAISE A;Fraise bois;7
+1;J10;FRAISE B;Taille;7
+1;J10;FRAISE B;Couleur;4
+1;J10;FRAISE B;Odeur;1
+1;J10;FRAISE B;Ferme ;7
+1;J10;FRAISE B;Juteux;4
+1;J10;FRAISE B;Fondant;5
+1;J10;FRAISE B;Sucree;7
+1;J10;FRAISE B;Acide;8
+1;J10;FRAISE B;Arome ;2
+1;J10;FRAISE B;Fraise bois;0
+1;J10;FRAISE C;Taille;7
+1;J10;FRAISE C;Couleur;3
+1;J10;FRAISE C;Odeur;1
+1;J10;FRAISE C;Ferme ;7
+1;J10;FRAISE C;Juteux;3
+1;J10;FRAISE C;Fondant;8
+1;J10;FRAISE C;Sucree;9
+1;J10;FRAISE C;Acide;7
+1;J10;FRAISE C;Arome ;6
+1;J10;FRAISE C;Fraise bois;1
+1;J10;FRAISE D;Taille;5
+1;J10;FRAISE D;Couleur;7
+1;J10;FRAISE D;Odeur;5
+1;J10;FRAISE D;Ferme ;3
+1;J10;FRAISE D;Juteux;7
+1;J10;FRAISE D;Fondant;9
+1;J10;FRAISE D;Sucree;7
+1;J10;FRAISE D;Acide;3
+1;J10;FRAISE D;Arome ;6
+1;J10;FRAISE D;Fraise bois;6
+1;J11;FRAISE A;Taille;5
+1;J11;FRAISE A;Couleur;9
+1;J11;FRAISE A;Odeur;2
+1;J11;FRAISE A;Ferme ;7
+1;J11;FRAISE A;Juteux;3
+1;J11;FRAISE A;Fondant;4
+1;J11;FRAISE A;Sucree;4
+1;J11;FRAISE A;Acide;4
+1;J11;FRAISE A;Arome ;4
+1;J11;FRAISE A;Fraise bois;3
+1;J11;FRAISE B;Taille;9
+1;J11;FRAISE B;Couleur;7
+1;J11;FRAISE B;Odeur;3
+1;J11;FRAISE B;Ferme ;5
+1;J11;FRAISE B;Juteux;4
+1;J11;FRAISE B;Fondant;5
+1;J11;FRAISE B;Sucree;5
+1;J11;FRAISE B;Acide;4
+1;J11;FRAISE B;Arome ;4
+1;J11;FRAISE B;Fraise bois;4
+1;J11;FRAISE C;Taille;7
+1;J11;FRAISE C;Couleur;8
+1;J11;FRAISE C;Odeur;9
+1;J11;FRAISE C;Ferme ;4
+1;J11;FRAISE C;Juteux;7
+1;J11;FRAISE C;Fondant;7
+1;J11;FRAISE C;Sucree;6
+1;J11;FRAISE C;Acide;4
+1;J11;FRAISE C;Arome ;7
+1;J11;FRAISE C;Fraise bois;7
+1;J11;FRAISE D;Taille;4
+1;J11;FRAISE D;Couleur;8
+1;J11;FRAISE D;Odeur;3
+1;J11;FRAISE D;Ferme ;3
+1;J11;FRAISE D;Juteux;6
+1;J11;FRAISE D;Fondant;7
+1;J11;FRAISE D;Sucree;6
+1;J11;FRAISE D;Acide;3
+1;J11;FRAISE D;Arome ;5
+1;J11;FRAISE D;Fraise bois;4
+1;J12;FRAISE A;Taille;5
+1;J12;FRAISE A;Couleur;9
+1;J12;FRAISE A;Odeur;1
+1;J12;FRAISE A;Ferme ;5
+1;J12;FRAISE A;Juteux;1
+1;J12;FRAISE A;Fondant;2
+1;J12;FRAISE A;Sucree;2
+1;J12;FRAISE A;Acide;6
+1;J12;FRAISE A;Arome ;4
+1;J12;FRAISE A;Fraise bois;3
+1;J12;FRAISE B;Taille;9
+1;J12;FRAISE B;Couleur;9
+1;J12;FRAISE B;Odeur;4
+1;J12;FRAISE B;Ferme ;3
+1;J12;FRAISE B;Juteux;3
+1;J12;FRAISE B;Fondant;4
+1;J12;FRAISE B;Sucree;6
+1;J12;FRAISE B;Acide;3
+1;J12;FRAISE B;Arome ;6
+1;J12;FRAISE B;Fraise bois;2
+1;J12;FRAISE C;Taille;5
+1;J12;FRAISE C;Couleur;7
+1;J12;FRAISE C;Odeur;5
+1;J12;FRAISE C;Ferme ;9
+1;J12;FRAISE C;Juteux;6
+1;J12;FRAISE C;Fondant;0
+1;J12;FRAISE C;Sucree;6
+1;J12;FRAISE C;Acide;1
+1;J12;FRAISE C;Arome ;5
+1;J12;FRAISE C;Fraise bois;5
+1;J12;FRAISE D;Taille;2
+1;J12;FRAISE D;Couleur;10
+1;J12;FRAISE D;Odeur;1
+1;J12;FRAISE D;Ferme ;6
+1;J12;FRAISE D;Juteux;2
+1;J12;FRAISE D;Fondant;5
+1;J12;FRAISE D;Sucree;4
+1;J12;FRAISE D;Acide;0
+1;J12;FRAISE D;Arome ;8
+1;J12;FRAISE D;Fraise bois;8
+1;J19;FRAISE A;Taille;6
+1;J19;FRAISE A;Couleur;7
+1;J19;FRAISE A;Odeur;5
+1;J19;FRAISE A;Ferme ;3
+1;J19;FRAISE A;Juteux;7
+1;J19;FRAISE A;Fondant;2
+1;J19;FRAISE A;Sucree;6
+1;J19;FRAISE A;Acide;4
+1;J19;FRAISE A;Arome ;5
+1;J19;FRAISE A;Fraise bois;2
+1;J19;FRAISE B;Taille;10
+1;J19;FRAISE B;Couleur;5
+1;J19;FRAISE B;Odeur;2
+1;J19;FRAISE B;Ferme ;2
+1;J19;FRAISE B;Juteux;7
+1;J19;FRAISE B;Fondant;3
+1;J19;FRAISE B;Sucree;5
+1;J19;FRAISE B;Acide;3
+1;J19;FRAISE B;Arome ;4
+1;J19;FRAISE B;Fraise bois;6
+1;J19;FRAISE C;Taille;6
+1;J19;FRAISE C;Couleur;5
+1;J19;FRAISE C;Odeur;5
+1;J19;FRAISE C;Ferme ;2
+1;J19;FRAISE C;Juteux;8
+1;J19;FRAISE C;Fondant;3
+1;J19;FRAISE C;Sucree;6
+1;J19;FRAISE C;Acide;1
+1;J19;FRAISE C;Arome ;4
+1;J19;FRAISE C;Fraise bois;3
+1;J19;FRAISE D;Taille;7
+1;J19;FRAISE D;Couleur;7
+1;J19;FRAISE D;Odeur;0
+1;J19;FRAISE D;Ferme ;1
+1;J19;FRAISE D;Juteux;7
+1;J19;FRAISE D;Fondant;3
+1;J19;FRAISE D;Sucree;3
+1;J19;FRAISE D;Acide;4
+1;J19;FRAISE D;Arome ;6
+1;J19;FRAISE D;Fraise bois;2
+1;J20;FRAISE A;Taille;3
+1;J20;FRAISE A;Couleur;8
+1;J20;FRAISE A;Odeur;5
+1;J20;FRAISE A;Ferme ;7
+1;J20;FRAISE A;Juteux;6
+1;J20;FRAISE A;Fondant;3
+1;J20;FRAISE A;Sucree;6
+1;J20;FRAISE A;Acide;4
+1;J20;FRAISE A;Arome ;5
+1;J20;FRAISE A;Fraise bois;3
+1;J20;FRAISE B;Taille;7
+1;J20;FRAISE B;Couleur;7
+1;J20;FRAISE B;Odeur;6
+1;J20;FRAISE B;Ferme ;3
+1;J20;FRAISE B;Juteux;8
+1;J20;FRAISE B;Fondant;7
+1;J20;FRAISE B;Sucree;8
+1;J20;FRAISE B;Acide;5
+1;J20;FRAISE B;Arome ;8
+1;J20;FRAISE B;Fraise bois;6
+1;J20;FRAISE C;Taille;7
+1;J20;FRAISE C;Couleur;8
+1;J20;FRAISE C;Odeur;7
+1;J20;FRAISE C;Ferme ;2
+1;J20;FRAISE C;Juteux;9
+1;J20;FRAISE C;Fondant;8
+1;J20;FRAISE C;Sucree;7
+1;J20;FRAISE C;Acide;2
+1;J20;FRAISE C;Arome ;7
+1;J20;FRAISE C;Fraise bois;8
+1;J20;FRAISE D;Taille;4
+1;J20;FRAISE D;Couleur;5
+1;J20;FRAISE D;Odeur;4
+1;J20;FRAISE D;Ferme ;7
+1;J20;FRAISE D;Juteux;3
+1;J20;FRAISE D;Fondant;3
+1;J20;FRAISE D;Sucree;3
+1;J20;FRAISE D;Acide;7
+1;J20;FRAISE D;Arome ;3
+1;J20;FRAISE D;Fraise bois;3
+2;J2;FRAISE A;Taille;4
+2;J2;FRAISE A;Couleur;8
+2;J2;FRAISE A;Odeur;1
+2;J2;FRAISE A;Ferme ;4
+2;J2;FRAISE A;Juteux;7
+2;J2;FRAISE A;Fondant;2
+2;J2;FRAISE A;Sucree;4
+2;J2;FRAISE A;Acide;5
+2;J2;FRAISE A;Arome ;7
+2;J2;FRAISE A;Fraise bois;5
+2;J2;FRAISE B;Taille;7
+2;J2;FRAISE B;Couleur;5
+2;J2;FRAISE B;Odeur;5
+2;J2;FRAISE B;Ferme ;5
+2;J2;FRAISE B;Juteux;9
+2;J2;FRAISE B;Fondant;3
+2;J2;FRAISE B;Sucree;7
+2;J2;FRAISE B;Acide;4
+2;J2;FRAISE B;Arome ;8
+2;J2;FRAISE B;Fraise bois;6
+2;J2;FRAISE C;Taille;4
+2;J2;FRAISE C;Couleur;6
+2;J2;FRAISE C;Odeur;6
+2;J2;FRAISE C;Ferme ;3
+2;J2;FRAISE C;Juteux;6
+2;J2;FRAISE C;Fondant;3
+2;J2;FRAISE C;Sucree;5
+2;J2;FRAISE C;Acide;6
+2;J2;FRAISE C;Arome ;7
+2;J2;FRAISE C;Fraise bois;5
+2;J2;FRAISE D;Taille;7
+2;J2;FRAISE D;Couleur;7
+2;J2;FRAISE D;Odeur;2
+2;J2;FRAISE D;Ferme ;3
+2;J2;FRAISE D;Juteux;9
+2;J2;FRAISE D;Fondant;4
+2;J2;FRAISE D;Sucree;6
+2;J2;FRAISE D;Acide;5
+2;J2;FRAISE D;Arome ;8
+2;J2;FRAISE D;Fraise bois;5
+2;J3;FRAISE A;Taille;6
+2;J3;FRAISE A;Couleur;7
+2;J3;FRAISE A;Odeur;5
+2;J3;FRAISE A;Ferme ;6
+2;J3;FRAISE A;Juteux;3
+2;J3;FRAISE A;Fondant;7
+2;J3;FRAISE A;Sucree;4
+2;J3;FRAISE A;Acide;5
+2;J3;FRAISE A;Arome ;7
+2;J3;FRAISE A;Fraise bois;6
+2;J3;FRAISE B;Taille;6
+2;J3;FRAISE B;Couleur;3
+2;J3;FRAISE B;Odeur;0
+2;J3;FRAISE B;Ferme ;8
+2;J3;FRAISE B;Juteux;4
+2;J3;FRAISE B;Fondant;6
+2;J3;FRAISE B;Sucree;5
+2;J3;FRAISE B;Acide;8
+2;J3;FRAISE B;Arome ;5
+2;J3;FRAISE B;Fraise bois;4
+2;J3;FRAISE C;Taille;5
+2;J3;FRAISE C;Couleur;5
+2;J3;FRAISE C;Odeur;6
+2;J3;FRAISE C;Ferme ;4
+2;J3;FRAISE C;Juteux;6
+2;J3;FRAISE C;Fondant;7
+2;J3;FRAISE C;Sucree;9
+2;J3;FRAISE C;Acide;2
+2;J3;FRAISE C;Arome ;8
+2;J3;FRAISE C;Fraise bois;8
+2;J3;FRAISE D;Taille;4
+2;J3;FRAISE D;Couleur;4
+2;J3;FRAISE D;Odeur;0
+2;J3;FRAISE D;Ferme ;8
+2;J3;FRAISE D;Juteux;5
+2;J3;FRAISE D;Fondant;5
+2;J3;FRAISE D;Sucree;3
+2;J3;FRAISE D;Acide;9
+2;J3;FRAISE D;Arome ;3
+2;J3;FRAISE D;Fraise bois;3
+2;J4;FRAISE A;Taille;3
+2;J4;FRAISE A;Couleur;9
+2;J4;FRAISE A;Odeur;6
+2;J4;FRAISE A;Ferme ;7
+2;J4;FRAISE A;Juteux;7
+2;J4;FRAISE A;Fondant;7
+2;J4;FRAISE A;Sucree;7
+2;J4;FRAISE A;Acide;6
+2;J4;FRAISE A;Arome ;6
+2;J4;FRAISE A;Fraise bois;7
+2;J4;FRAISE B;Taille;8
+2;J4;FRAISE B;Couleur;7
+2;J4;FRAISE B;Odeur;4
+2;J4;FRAISE B;Ferme ;3
+2;J4;FRAISE B;Juteux;8
+2;J4;FRAISE B;Fondant;7
+2;J4;FRAISE B;Sucree;8
+2;J4;FRAISE B;Acide;7
+2;J4;FRAISE B;Arome ;7
+2;J4;FRAISE B;Fraise bois;6
+2;J4;FRAISE C;Taille;6
+2;J4;FRAISE C;Couleur;7
+2;J4;FRAISE C;Odeur;7
+2;J4;FRAISE C;Ferme ;5
+2;J4;FRAISE C;Juteux;8
+2;J4;FRAISE C;Fondant;7
+2;J4;FRAISE C;Sucree;7
+2;J4;FRAISE C;Acide;7
+2;J4;FRAISE C;Arome ;6
+2;J4;FRAISE C;Fraise bois;6
+2;J4;FRAISE D;Taille;6
+2;J4;FRAISE D;Couleur;9
+2;J4;FRAISE D;Odeur;2
+2;J4;FRAISE D;Ferme ;6
+2;J4;FRAISE D;Juteux;7
+2;J4;FRAISE D;Fondant;7
+2;J4;FRAISE D;Sucree;6
+2;J4;FRAISE D;Acide;7
+2;J4;FRAISE D;Arome ;8
+2;J4;FRAISE D;Fraise bois;9
+2;J5;FRAISE A;Taille;6
+2;J5;FRAISE A;Couleur;10
+2;J5;FRAISE A;Odeur;7
+2;J5;FRAISE A;Ferme ;7
+2;J5;FRAISE A;Juteux;7
+2;J5;FRAISE A;Fondant;6
+2;J5;FRAISE A;Sucree;9
+2;J5;FRAISE A;Acide;4
+2;J5;FRAISE A;Arome ;8
+2;J5;FRAISE A;Fraise bois;5
+2;J5;FRAISE B;Taille;7
+2;J5;FRAISE B;Couleur;8
+2;J5;FRAISE B;Odeur;5
+2;J5;FRAISE B;Ferme ;6
+2;J5;FRAISE B;Juteux;8
+2;J5;FRAISE B;Fondant;6
+2;J5;FRAISE B;Sucree;8
+2;J5;FRAISE B;Acide;3
+2;J5;FRAISE B;Arome ;8
+2;J5;FRAISE B;Fraise bois;4
+2;J5;FRAISE C;Taille;5
+2;J5;FRAISE C;Couleur;8
+2;J5;FRAISE C;Odeur;4
+2;J5;FRAISE C;Ferme ;6
+2;J5;FRAISE C;Juteux;7
+2;J5;FRAISE C;Fondant;7
+2;J5;FRAISE C;Sucree;9
+2;J5;FRAISE C;Acide;4
+2;J5;FRAISE C;Arome ;9
+2;J5;FRAISE C;Fraise bois;6
+2;J5;FRAISE D;Taille;4
+2;J5;FRAISE D;Couleur;10
+2;J5;FRAISE D;Odeur;6
+2;J5;FRAISE D;Ferme ;5
+2;J5;FRAISE D;Juteux;8
+2;J5;FRAISE D;Fondant;7
+2;J5;FRAISE D;Sucree;10
+2;J5;FRAISE D;Acide;3
+2;J5;FRAISE D;Arome ;8
+2;J5;FRAISE D;Fraise bois;6
+2;J6;FRAISE A;Taille;5
+2;J6;FRAISE A;Couleur;8
+2;J6;FRAISE A;Odeur;3
+2;J6;FRAISE A;Ferme ;7
+2;J6;FRAISE A;Juteux;5
+2;J6;FRAISE A;Fondant;5
+2;J6;FRAISE A;Sucree;4
+2;J6;FRAISE A;Acide;8
+2;J6;FRAISE A;Arome ;5
+2;J6;FRAISE A;Fraise bois;2
+2;J6;FRAISE B;Taille;6
+2;J6;FRAISE B;Couleur;9
+2;J6;FRAISE B;Odeur;7
+2;J6;FRAISE B;Ferme ;3
+2;J6;FRAISE B;Juteux;7
+2;J6;FRAISE B;Fondant;9
+2;J6;FRAISE B;Sucree;7
+2;J6;FRAISE B;Acide;4
+2;J6;FRAISE B;Arome ;8
+2;J6;FRAISE B;Fraise bois;5
+2;J6;FRAISE C;Taille;9
+2;J6;FRAISE C;Couleur;8
+2;J6;FRAISE C;Odeur;8
+2;J6;FRAISE C;Ferme ;3
+2;J6;FRAISE C;Juteux;9
+2;J6;FRAISE C;Fondant;9
+2;J6;FRAISE C;Sucree;8
+2;J6;FRAISE C;Acide;3
+2;J6;FRAISE C;Arome ;9
+2;J6;FRAISE C;Fraise bois;9
+2;J6;FRAISE D;Taille;4
+2;J6;FRAISE D;Couleur;10
+2;J6;FRAISE D;Odeur;3
+2;J6;FRAISE D;Ferme ;3
+2;J6;FRAISE D;Juteux;7
+2;J6;FRAISE D;Fondant;9
+2;J6;FRAISE D;Sucree;4
+2;J6;FRAISE D;Acide;6
+2;J6;FRAISE D;Arome ;6
+2;J6;FRAISE D;Fraise bois;5
+2;J8;FRAISE A;Taille;3
+2;J8;FRAISE A;Couleur;9
+2;J8;FRAISE A;Odeur;3
+2;J8;FRAISE A;Ferme ;7
+2;J8;FRAISE A;Juteux;4
+2;J8;FRAISE A;Fondant;3
+2;J8;FRAISE A;Sucree;3
+2;J8;FRAISE A;Acide;7
+2;J8;FRAISE A;Arome ;4
+2;J8;FRAISE A;Fraise bois;5
+2;J8;FRAISE B;Taille;6
+2;J8;FRAISE B;Couleur;7
+2;J8;FRAISE B;Odeur;3
+2;J8;FRAISE B;Ferme ;4
+2;J8;FRAISE B;Juteux;7
+2;J8;FRAISE B;Fondant;6
+2;J8;FRAISE B;Sucree;4
+2;J8;FRAISE B;Acide;6
+2;J8;FRAISE B;Arome ;6
+2;J8;FRAISE B;Fraise bois;4
+2;J8;FRAISE C;Taille;9
+2;J8;FRAISE C;Couleur;7
+2;J8;FRAISE C;Odeur;2
+2;J8;FRAISE C;Ferme ;4
+2;J8;FRAISE C;Juteux;8
+2;J8;FRAISE C;Fondant;6
+2;J8;FRAISE C;Sucree;4
+2;J8;FRAISE C;Acide;4
+2;J8;FRAISE C;Arome ;6
+2;J8;FRAISE C;Fraise bois;3
+2;J8;FRAISE D;Taille;6
+2;J8;FRAISE D;Couleur;8
+2;J8;FRAISE D;Odeur;1
+2;J8;FRAISE D;Ferme ;4
+2;J8;FRAISE D;Juteux;7
+2;J8;FRAISE D;Fondant;6
+2;J8;FRAISE D;Sucree;8
+2;J8;FRAISE D;Acide;5
+2;J8;FRAISE D;Arome ;7
+2;J8;FRAISE D;Fraise bois;7
+2;J9;FRAISE A;Taille;4
+2;J9;FRAISE A;Couleur;8
+2;J9;FRAISE A;Odeur;3
+2;J9;FRAISE A;Ferme ;3
+2;J9;FRAISE A;Juteux;6
+2;J9;FRAISE A;Fondant;9
+2;J9;FRAISE A;Sucree;3
+2;J9;FRAISE A;Acide;6
+2;J9;FRAISE A;Arome ;7
+2;J9;FRAISE A;Fraise bois;5
+2;J9;FRAISE B;Taille;9
+2;J9;FRAISE B;Couleur;9
+2;J9;FRAISE B;Odeur;2
+2;J9;FRAISE B;Ferme ;6
+2;J9;FRAISE B;Juteux;9
+2;J9;FRAISE B;Fondant;7
+2;J9;FRAISE B;Sucree;5
+2;J9;FRAISE B;Acide;7
+2;J9;FRAISE B;Arome ;5
+2;J9;FRAISE B;Fraise bois;6
+2;J9;FRAISE C;Taille;6
+2;J9;FRAISE C;Couleur;6
+2;J9;FRAISE C;Odeur;3
+2;J9;FRAISE C;Ferme ;6
+2;J9;FRAISE C;Juteux;7
+2;J9;FRAISE C;Fondant;7
+2;J9;FRAISE C;Sucree;5
+2;J9;FRAISE C;Acide;6
+2;J9;FRAISE C;Arome ;6
+2;J9;FRAISE C;Fraise bois;5
+2;J9;FRAISE D;Taille;8
+2;J9;FRAISE D;Couleur;7
+2;J9;FRAISE D;Odeur;5
+2;J9;FRAISE D;Ferme ;5
+2;J9;FRAISE D;Juteux;7
+2;J9;FRAISE D;Fondant;6
+2;J9;FRAISE D;Sucree;7
+2;J9;FRAISE D;Acide;4
+2;J9;FRAISE D;Arome ;6
+2;J9;FRAISE D;Fraise bois;5
+2;J10;FRAISE A;Taille;6
+2;J10;FRAISE A;Couleur;9
+2;J10;FRAISE A;Odeur;7
+2;J10;FRAISE A;Ferme ;7
+2;J10;FRAISE A;Juteux;6
+2;J10;FRAISE A;Fondant;10
+2;J10;FRAISE A;Sucree;10
+2;J10;FRAISE A;Acide;3
+2;J10;FRAISE A;Arome ;9
+2;J10;FRAISE A;Fraise bois;7
+2;J10;FRAISE B;Taille;8
+2;J10;FRAISE B;Couleur;6
+2;J10;FRAISE B;Odeur;0
+2;J10;FRAISE B;Ferme ;3
+2;J10;FRAISE B;Juteux;9
+2;J10;FRAISE B;Fondant;7
+2;J10;FRAISE B;Sucree;7
+2;J10;FRAISE B;Acide;8
+2;J10;FRAISE B;Arome ;2
+2;J10;FRAISE B;Fraise bois;0
+2;J10;FRAISE C;Taille;4
+2;J10;FRAISE C;Couleur;6
+2;J10;FRAISE C;Odeur;7
+2;J10;FRAISE C;Ferme ;2
+2;J10;FRAISE C;Juteux;8
+2;J10;FRAISE C;Fondant;10
+2;J10;FRAISE C;Sucree;2
+2;J10;FRAISE C;Acide;8
+2;J10;FRAISE C;Arome ;8
+2;J10;FRAISE C;Fraise bois;7
+2;J10;FRAISE D;Taille;5
+2;J10;FRAISE D;Couleur;9
+2;J10;FRAISE D;Odeur;8
+2;J10;FRAISE D;Ferme ;1
+2;J10;FRAISE D;Juteux;10
+2;J10;FRAISE D;Fondant;9
+2;J10;FRAISE D;Sucree;9
+2;J10;FRAISE D;Acide;2
+2;J10;FRAISE D;Arome ;9
+2;J10;FRAISE D;Fraise bois;8
+2;J11;FRAISE A;Taille;4
+2;J11;FRAISE A;Couleur;7
+2;J11;FRAISE A;Odeur;6
+2;J11;FRAISE A;Ferme ;5
+2;J11;FRAISE A;Juteux;2
+2;J11;FRAISE A;Fondant;4
+2;J11;FRAISE A;Sucree;3
+2;J11;FRAISE A;Acide;4
+2;J11;FRAISE A;Arome ;3
+2;J11;FRAISE A;Fraise bois;4
+2;J11;FRAISE B;Taille;7
+2;J11;FRAISE B;Couleur;6
+2;J11;FRAISE B;Odeur;5
+2;J11;FRAISE B;Ferme ;4
+2;J11;FRAISE B;Juteux;5
+2;J11;FRAISE B;Fondant;5
+2;J11;FRAISE B;Sucree;5
+2;J11;FRAISE B;Acide;4
+2;J11;FRAISE B;Arome ;5
+2;J11;FRAISE B;Fraise bois;4
+2;J11;FRAISE C;Taille;8
+2;J11;FRAISE C;Couleur;7
+2;J11;FRAISE C;Odeur;5
+2;J11;FRAISE C;Ferme ;4
+2;J11;FRAISE C;Juteux;5
+2;J11;FRAISE C;Fondant;6
+2;J11;FRAISE C;Sucree;3
+2;J11;FRAISE C;Acide;4
+2;J11;FRAISE C;Arome ;4
+2;J11;FRAISE C;Fraise bois;5
+2;J11;FRAISE D;Taille;4
+2;J11;FRAISE D;Couleur;5
+2;J11;FRAISE D;Odeur;3
+2;J11;FRAISE D;Ferme ;4
+2;J11;FRAISE D;Juteux;3
+2;J11;FRAISE D;Fondant;4
+2;J11;FRAISE D;Sucree;3
+2;J11;FRAISE D;Acide;4
+2;J11;FRAISE D;Arome ;3
+2;J11;FRAISE D;Fraise bois;3
+2;J12;FRAISE A;Taille;5
+2;J12;FRAISE A;Couleur;8
+2;J12;FRAISE A;Odeur;7
+2;J12;FRAISE A;Ferme ;3
+2;J12;FRAISE A;Juteux;4
+2;J12;FRAISE A;Fondant;5
+2;J12;FRAISE A;Sucree;4
+2;J12;FRAISE A;Acide;1
+2;J12;FRAISE A;Arome ;5
+2;J12;FRAISE A;Fraise bois;6
+2;J12;FRAISE B;Taille;7
+2;J12;FRAISE B;Couleur;6
+2;J12;FRAISE B;Odeur;1
+2;J12;FRAISE B;Ferme ;7
+2;J12;FRAISE B;Juteux;2
+2;J12;FRAISE B;Fondant;3
+2;J12;FRAISE B;Sucree;2
+2;J12;FRAISE B;Acide;6
+2;J12;FRAISE B;Arome ;4
+2;J12;FRAISE B;Fraise bois;5
+2;J12;FRAISE C;Taille;7
+2;J12;FRAISE C;Couleur;9
+2;J12;FRAISE C;Odeur;1
+2;J12;FRAISE C;Ferme ;2
+2;J12;FRAISE C;Juteux;6
+2;J12;FRAISE C;Fondant;7
+2;J12;FRAISE C;Sucree;3
+2;J12;FRAISE C;Acide;1
+2;J12;FRAISE C;Arome ;3
+2;J12;FRAISE C;Fraise bois;4
+2;J12;FRAISE D;Taille;6
+2;J12;FRAISE D;Couleur;10
+2;J12;FRAISE D;Odeur;1
+2;J12;FRAISE D;Ferme ;4
+2;J12;FRAISE D;Juteux;6
+2;J12;FRAISE D;Fondant;3
+2;J12;FRAISE D;Sucree;3
+2;J12;FRAISE D;Acide;1
+2;J12;FRAISE D;Arome ;3
+2;J12;FRAISE D;Fraise bois;4
+2;J19;FRAISE A;Taille;5
+2;J19;FRAISE A;Couleur;8
+2;J19;FRAISE A;Odeur;0
+2;J19;FRAISE A;Ferme ;3
+2;J19;FRAISE A;Juteux;1
+2;J19;FRAISE A;Fondant;3
+2;J19;FRAISE A;Sucree;7
+2;J19;FRAISE A;Acide;3
+2;J19;FRAISE A;Arome ;4
+2;J19;FRAISE A;Fraise bois;3
+2;J19;FRAISE B;Taille;7
+2;J19;FRAISE B;Couleur;5
+2;J19;FRAISE B;Odeur;3
+2;J19;FRAISE B;Ferme ;1
+2;J19;FRAISE B;Juteux;5
+2;J19;FRAISE B;Fondant;7
+2;J19;FRAISE B;Sucree;9
+2;J19;FRAISE B;Acide;1
+2;J19;FRAISE B;Arome ;6
+2;J19;FRAISE B;Fraise bois;4
+2;J19;FRAISE C;Taille;7
+2;J19;FRAISE C;Couleur;5
+2;J19;FRAISE C;Odeur;6
+2;J19;FRAISE C;Ferme ;1
+2;J19;FRAISE C;Juteux;7
+2;J19;FRAISE C;Fondant;6
+2;J19;FRAISE C;Sucree;4
+2;J19;FRAISE C;Acide;2
+2;J19;FRAISE C;Arome ;6
+2;J19;FRAISE C;Fraise bois;4
+2;J19;FRAISE D;Taille;4
+2;J19;FRAISE D;Couleur;5
+2;J19;FRAISE D;Odeur;2
+2;J19;FRAISE D;Ferme ;1
+2;J19;FRAISE D;Juteux;6
+2;J19;FRAISE D;Fondant;7
+2;J19;FRAISE D;Sucree;8
+2;J19;FRAISE D;Acide;1
+2;J19;FRAISE D;Arome ;7
+2;J19;FRAISE D;Fraise bois;4
+2;J20;FRAISE A;Taille;2
+2;J20;FRAISE A;Couleur;8
+2;J20;FRAISE A;Odeur;7
+2;J20;FRAISE A;Ferme ;7
+2;J20;FRAISE A;Juteux;3
+2;J20;FRAISE A;Fondant;4
+2;J20;FRAISE A;Sucree;8
+2;J20;FRAISE A;Acide;3
+2;J20;FRAISE A;Arome ;7
+2;J20;FRAISE A;Fraise bois;7
+2;J20;FRAISE B;Taille;8
+2;J20;FRAISE B;Couleur;6
+2;J20;FRAISE B;Odeur;6
+2;J20;FRAISE B;Ferme ;3
+2;J20;FRAISE B;Juteux;9
+2;J20;FRAISE B;Fondant;8
+2;J20;FRAISE B;Sucree;5
+2;J20;FRAISE B;Acide;5
+2;J20;FRAISE B;Arome ;3
+2;J20;FRAISE B;Fraise bois;3
+2;J20;FRAISE C;Taille;7
+2;J20;FRAISE C;Couleur;7
+2;J20;FRAISE C;Odeur;7
+2;J20;FRAISE C;Ferme ;2
+2;J20;FRAISE C;Juteux;9
+2;J20;FRAISE C;Fondant;8
+2;J20;FRAISE C;Sucree;4
+2;J20;FRAISE C;Acide;3
+2;J20;FRAISE C;Arome ;6
+2;J20;FRAISE C;Fraise bois;5
+2;J20;FRAISE D;Taille;3
+2;J20;FRAISE D;Couleur;8
+2;J20;FRAISE D;Odeur;5
+2;J20;FRAISE D;Ferme ;2
+2;J20;FRAISE D;Juteux;8
+2;J20;FRAISE D;Fondant;7
+2;J20;FRAISE D;Sucree;5
+2;J20;FRAISE D;Acide;2
+2;J20;FRAISE D;Arome ;4
+2;J20;FRAISE D;Fraise bois;3
