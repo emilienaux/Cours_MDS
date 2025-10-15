@@ -139,103 +139,74 @@ Vadim L, Valentine J, Emilie N
 </div>
 
 </section>
-<section id="objectif-du-mds" class="slide level2 center">
-<h2>Objectif du MDS</h2>
-<p>Multidimensional Scaling (MDS) À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une carte qui préserve les distances entre les points.</p>
-<p>On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).</p>
-<p>La carte reconstruite fournit des coordonnées <span class="math inline">\(x_i = (x_{i1}, x_{i2})\)</span>.</p>
-<p>La distance naturelle est : <span class="math display">\[
-\|x_i - x_j\|_2
-\]</span></p>
-<p>exemple de sortie</p>
+<section id="objectif-du-mds-multidimensional-scaling" class="slide level2 center">
+<h2>Objectif du MDS (Multidimensional Scaling)</h2>
+<p>Méthode de représentation géométrique des données</p>
+<p><strong>Objectif</strong> : À partir de mesures de dissimilarité entre objets, on cherche à reconstruire une carte où les distances entre les points reflètent au mieux ces dissimilarités.</p>
+<ul>
+<li class="fragment"><p>On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).</p></li>
+<li class="fragment"><p>La carte reconstruite fournit des coordonnées <span class="math display">\[x_i = (x_{i1}, x_{i2})\]</span> et la distance naturelle est : <span class="math display">\[\|x_i - x_j\|_2 \]</span></p></li>
+</ul>
+<p>Si deux objets sont très similaires → leurs points seront proches</p>
+<p>Si deux objets sont très différents → leurs points seront éloignés</p>
 </section>
 <section id="famille-de-méthodes-mds" class="slide level2 center">
 <h2>Famille de méthodes MDS</h2>
-<p>Le MDS n’est pas une seule méthode, mais une famille d’algorithmes visant à trouver une configuration optimale dans un espace de faible dimension (souvent <span class="math inline">\(p = 2\)</span>).</p>
+<p>Le MDS est une famille d’algorithmes visant à trouver une configuration spatiale la plus optimal</p>
 <p>Les principales méthodes :</p>
 <ul>
-<li class="fragment"><p>MDS classique (Classical MDS)</p></li>
-<li class="fragment"><p>MDS métrique (Metric MDS)</p></li>
-<li class="fragment"><p>MDS non métrique (Non-metric MDS)</p>
-<p>Exemple perception des couleurs (PDF)</p></li>
+<li class="fragment"><p><strong>MDS classique (Classical MDS)</strong></p></li>
+<li class="fragment"><p><strong>MDS métrique (Metric MDS)</strong></p></li>
+<li class="fragment"><p><strong>MDS non métrique (Non-metric MDS)</strong></p></li>
 </ul>
-</section>
-<section id="distance-dissimilarité-et-similarité" class="slide level2 center">
-<h2>Distance, dissimilarité et similarité</h2>
-<p>Les notions de distance, dissimilarité et similarité (ou proximité) sont définies pour toute paire d’objets.</p>
-<p>On peut se demander si les dissimilarités données sont&nbsp;<strong>vraiment des distances</strong>, et si elles peuvent être&nbsp;<strong>interprétées comme des distances euclidiennes</strong>.</p>
-<p>Étant donnée une matrice de dissimilarités $ D = (d_{ij}) $, le MDS cherche à trouver des points $ x_i,…x_n $ appartenant à <span class="math inline">\(\mathbb{R}^p\)</span>.</p>
-<p>tels que : <span class="math display">\[
-d_{ij} \approx \|x_i - x_j\|_2
-\]</span></p>
-<p>Si la configuration exacte existe → distance euclidienne<br>
-Sinon → distance non euclidienne</p>
-</section>
-<section id="exemple-de-distance-non-euclidienne" class="slide level2 center">
-<h2>Exemple de distance non euclidienne</h2>
-<p>La distance radiale sur un cercle (longueur de l’arc entre deux points) :</p>
-<p>Est bien une métrique,<br>
-Mais ne peut pas être représentée exactement dans un espace euclidien <span class="math inline">\(\mathbb{R}^p\)</span>.</p>
-<p>Le MDS cherche une configuration approchée minimisant l’écart entre <span class="math inline">\(d_{ij}\)</span> et <span class="math inline">\(\|x_i - x_j\|_2\)</span>.</p>
-<p>Photo exemple dans pdf FR</p>
 </section>
 <section id="mds-classique-idée-générale" class="slide level2 center">
 <h2>MDS classique : idée générale</h2>
-<p>But : retrouver les coordonnées des points à partir d’une matrice de distances <span class="math inline">\(D = (d_{ij})\)</span> supposées euclidiennes.</p>
+<p>Objectif : retrouver les coordonnées des points à partir d’une matrice de distances <span class="math inline">\(D = (d_{ij})\)</span> supposées euclidiennes.</p>
 <p><span class="math display">\[
 \|x_i - x_j\| \approx d_{ij}
 \]</span></p>
 <p>Plutôt que de calculer <span class="math inline">\(X\)</span> directement, on travaille avec la matrice de produits scalaires : <span class="math display">\[
 B = X X'
 \]</span></p>
-<p>Si <span class="math inline">\(X\)</span> est centrée : <span class="math display">\[
+<p>Calcule de double centrage : <span class="math display">\[
 B = -\frac{1}{2} C D_2 C
-\]</span> où $ C $est la matrice de centrage.</p>
+\]</span> où <span class="math display">\[C \]</span> est la matrice de centrage.</p>
+<p>–&gt; On centre les distances autour du centre de gravité pour garantir une représentation équilibrée.</p>
 </section>
 <section id="étapes-du-calcul" class="slide level2 center">
 <h2>Étapes du calcul</h2>
-<p>Données d’entrée : la matrice des distances <span class="math inline">\(D = (d_{ij})\)</span>.</p>
-<p>Centrage double : <span class="math display">\[
-B = -\frac{1}{2} C D_2 C
-\]</span></p>
-<p>Décomposition en valeurs propres : <span class="math display">\[
-B = V \Lambda V'
-\]</span></p>
-<p>Coordonnées finales : <span class="math display">\[
-X = V \Lambda^{1/2}
-\]</span></p>
-<p><em>Exemple:</em><br>
-<strong>Distances → Matrice B → Décomposition → Coordonnées (R²)</strong></p>
-</section>
-<section id="réduction-des-dimensions" class="slide level2 center">
-<h2>Réduction des dimensions</h2>
-<p>Souvent, on garde seulement les <span class="math inline">\(p\)</span> premières composantes correspondant aux plus grandes valeurs propres : <span class="math display">\[
-X^{(p)} = V_p \Lambda_p^{1/2}
-\]</span> où :<br>
-- <span class="math inline">\(\Lambda_p\)</span> = sous-matrice <span class="math inline">\((p \times p)\)</span> des plus grandes valeurs propres<br>
-- <span class="math inline">\(V_p\)</span> = les colonnes associées de <span class="math inline">\(V\)</span></p>
-<p>Les colonnes de <span class="math inline">\(X^{(p)}\)</span> sont les axes principaux (comme en ACP).<br>
-On obtient une carte 2D/3D qui préserve au mieux les distances.</p>
+<p>Matrice des distances <span class="math inline">\(D = (d_{ij})\)</span></p>
+<p>Matrice des carrés <span class="math inline">\(D^2 = (d^2_{ij})\)</span></p>
+<p>Centrage de la matrice : <span class="math inline">\(B = -\frac{1}{2} C D_2 C\)</span></p>
+<p>Décomposition en valeurs propres : <span class="math inline">\(B = V \Lambda V'\)</span></p>
+<p>Coordonnées finales : <span class="math inline">\(X^{(p)} = V_p \Lambda_p^{1/2}\)</span></p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\Lambda_p\)</span> = sous-matrice <span class="math inline">\((p \times p)\)</span> des plus grandes valeurs propres qui mesurent la variance sur chaque axe</p></li>
+<li class="fragment"><p><span class="math inline">\(V_p\)</span> = les colonnes associées de <span class="math inline">\(V\)</span> qui contient les vecteurs propres qui définissent les axes principaux</p></li>
+<li class="fragment"><p>Les lignes de <span class="math inline">\(X^p\)</span> donnent les coordonnées des individus dans un espace p-dimensionnel (souvent petit avec p=2)</p></li>
+<li class="fragment"><p>Les colonnes de <span class="math inline">\(X^{(p)}\)</span> sont les axes principaux de cet espace</p></li>
+</ul>
+<p>On obtient une carte 2D/3D qui préserve au mieux les distances. En MDS classique celles-ci sont supposées euclidienne donc la reconstruction est exacte sinon on obtient la meilleure approximation.</p>
 </section>
 <section id="résumé-mds-classique" class="slide level2 center">
 <h2>Résumé : MDS classique</h2>
 <ul>
 <li class="fragment"><p>Conserve les distances euclidiennes autant que possible</p></li>
-<li class="fragment"><p>Produit des coordonnées centrées et ordonnées par importance (variance)</p></li>
+<li class="fragment"><p>Produit des axes principaux ordonnés selon leur importance qui maximisent la variance expliquées par les distances</p></li>
 <li class="fragment"><p>Permet une visualisation claire des relations entre objets</p></li>
-<li class="fragment"><p>Proche de l’ACP, mais part d’une matrice de distances.</p>
-<p>Voir les 3 exemples pdf</p></li>
+<li class="fragment"><p>Proche de l’ACP mais</p>
+<ul>
+<li class="fragment"><p>ACP part d’un tableau de variables –&gt; matrice de covariance</p></li>
+<li class="fragment"><p>MDS part d’une matrice de distance –&gt; coordonnées</p></li>
+</ul></li>
 </ul>
 </section>
-<section id="distance-scaling-mise-à-léchelle-des-distances" class="slide level2 center">
-<h2>Distance Scaling (mise à l’échelle des distances)</h2>
-<p>Le MDS classique cherche une configuration <span class="math inline">\(x_i\)</span> telle que : <span class="math display">\[
-d_{ij} \approx \hat{d}_{ij} = \|x_i - x_j\|_2
-\]</span></p>
-<p>La mise à l’échelle des distances assouplit cette contrainte en autorisant une transformation monotone : <span class="math display">\[
-\hat{d}_{ij} \approx f(d_{ij})
-\]</span> où <span class="math inline">\(f\)</span> est une fonction monotone croissante.</p>
-</section>
+<section id="exemple-perception-de-différents-types-de-fraises" class="slide level2 center">
+<h2>Exemple : perception de différents types de fraises</h2>
+<p>4 types de fraises dégustées 2 fois par un jury composé de 12 personnes. Une note a été attibuée pour chaque descripteur sensoriel et pour chaque dégustation. On cherche à voir les différence et ressemblance entre les 4 types de fraises.</p>
+
+<img data-src="fraise%20plot.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="types-de-mds" class="slide level2 center">
 <h2>Types de MDS</h2>
 <ul>
@@ -245,6 +216,44 @@ d_{ij} \approx \hat{d}_{ij} = \|x_i - x_j\|_2
 <p>Différence avec le MDS classique :<br>
 Contrairement au cMDS, la mise à l’échelle des distances est un processus d’optimisation.<br>
 On cherche à minimiser une <strong>fonction de stress</strong>, et la solution est obtenue par des <strong>algorithmes itératifs</strong>.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">## Distance, dissimilarité et similarité</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Les notions de distance, dissimilarité et similarité (ou proximité) sont définies pour toute paire d’objets.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">On peut se demander si les dissimilarités données sont&nbsp;<strong>vraiment des distances</strong>, et si elles peuvent être&nbsp;<strong>interprétées comme des distances euclidiennes</strong>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Étant donnée une matrice de dissimilarités $ D = (d_{ij}) $, le MDS cherche à trouver des points $ x_i,…x_n $ appartenant à <span class="math inline">\(\mathbb{R}^p\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tels que : <span class="math display">\[
+d_{ij} \approx \|x_i - x_j\|_2
+\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Si la configuration exacte existe → distance euclidienne<br>
+Sinon → distance non euclidienne</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exemple-de-distance-non-euclidienne" class="slide level2 center">
+<h2>Exemple de distance non euclidienne</h2>
+<p>La distance radiale sur un cercle (longueur de l’arc entre deux points) :</p>
+<p>Est bien une métrique,<br>
+Mais ne peut pas être représentée exactement dans un espace euclidien <span class="math inline">\(\mathbb{R}^p\)</span>.</p>
+<p>Le MDS cherche une configuration approchée minimisant l’écart entre <span class="math inline">\(d_{ij}\)</span> et <span class="math inline">\(\|x_i - x_j\|_2\)</span>.</p>
+</section>
+<section id="photo-exemple-dans-pdf-fr" class="slide level2 center">
+<h2>Photo exemple dans pdf FR</h2>
 </section>
 <section id="mds-métrique" class="slide level2 center">
 <h2>MDS métrique</h2>
@@ -287,12 +296,12 @@ Le cas particulier <span class="math inline">\(f(d_{ij}) = d_{ij}\)</span> corre
 </section>
 <section id="comparaison-cmds-vs-sammon-mapping" class="slide level2 center">
 <h2>Comparaison : cMDS vs Sammon Mapping</h2>
-<table class="caption-top">
+<table class="caption-top" style="width:98%;">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 35%">
+<col style="width: 31%">
 </colgroup>
 <thead>
 <tr class="header">

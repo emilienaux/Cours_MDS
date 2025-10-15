@@ -4,8 +4,8 @@ library(patchwork)
 
 
 fraise <- read.csv2("~/Documents/analyse fact/fraise.csv", sep = ";", header = TRUE)
-
-
+fraise$CJ = as.factor(fraise$CJ)
+summary(fraise)
 head(fraise)
 
 # Moyenne des notes pour chaque type de fraise et chaque descripteur sensoriel
@@ -40,7 +40,7 @@ ggplot() +
   
   geom_segment(data = df_cor, ## Flèches = descripteurs sensoriels
                aes(x = 0, y = 0, xend = Dim1 * 2, yend = Dim2 * 2),  # *2 projette plus loins donc meilleur visibilité 
-               arrow = arrow(length = unit(0.5, "cm")), color = "red") +
+               arrow = arrow(length = unit(0.5, "cm")), color = "coral") +
   geom_text_repel(data = df_cor,
                   aes(x = Dim1 * 2, y = Dim2 * 2, label = Attribut),
                   color = "blue", size = 4) + ## nom des descripteurs 

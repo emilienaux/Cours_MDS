@@ -12,69 +12,39 @@ format:
     mathjax: "default"
 ---
 
-## Objectif du MDS
+## Objectif du MDS (Multidimensional Scaling)
 
-Multidimensional Scaling (MDS) À partir de mesures de dissimilarité entre paires d’objets, on cherche à reconstruire une carte qui préserve les distances entre les points.
+Méthode de représentation géométrique des données
 
-On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).
+**Objectif** : À partir de mesures de dissimilarité entre objets, on cherche à reconstruire une carte où les distances entre les points reflètent au mieux ces dissimilarités.
 
-La carte reconstruite fournit des coordonnées $x_i = (x_{i1}, x_{i2})$.
+-   On peut partir de toute mesure de dissimilarité (pas forcément une distance métrique).
 
-La distance naturelle est : $$
-\|x_i - x_j\|_2
-$$
+-   La carte reconstruite fournit des coordonnées $$x_i = (x_{i1}, x_{i2})$$ et la distance naturelle est : $$\|x_i - x_j\|_2 $$
 
-exemple de sortie
+Si deux objets sont très similaires → leurs points seront proches
+
+Si deux objets sont très différents → leurs points seront éloignés
+
+------------------------------------------------------------------------
 
 ## Famille de méthodes MDS
 
-Le MDS n’est pas une seule méthode, mais une famille d’algorithmes visant à trouver une configuration optimale dans un espace de faible dimension (souvent $p = 2$).
+Le MDS est une famille d’algorithmes visant à trouver une configuration spatiale la plus optimal
 
 Les principales méthodes :
 
--   MDS classique (Classical MDS)
+-   **MDS classique (Classical MDS)**
 
--   MDS métrique (Metric MDS)
+-   **MDS métrique (Metric MDS)**
 
--   MDS non métrique (Non-metric MDS)
-
-    Exemple perception des couleurs (PDF)
-
-------------------------------------------------------------------------
-
-## Distance, dissimilarité et similarité
-
-Les notions de distance, dissimilarité et similarité (ou proximité) sont définies pour toute paire d’objets.
-
-On peut se demander si les dissimilarités données sont **vraiment des distances**, et si elles peuvent être **interprétées comme des distances euclidiennes**.
-
-Étant donnée une matrice de dissimilarités $ D = (d_{ij}) $, le MDS cherche à trouver des points $ x_i,...x_n $ appartenant à $\mathbb{R}^p$.
-
-tels que : $$
-d_{ij} \approx \|x_i - x_j\|_2
-$$
-
-Si la configuration exacte existe → distance euclidienne\
-Sinon → distance non euclidienne
-
-------------------------------------------------------------------------
-
-## Exemple de distance non euclidienne
-
-La distance radiale sur un cercle (longueur de l’arc entre deux points) :
-
-Est bien une métrique,\
-Mais ne peut pas être représentée exactement dans un espace euclidien $\mathbb{R}^p$.
-
-Le MDS cherche une configuration approchée minimisant l’écart entre $d_{ij}$ et $\|x_i - x_j\|_2$.
-
-Photo exemple dans pdf FR
+-   **MDS non métrique (Non-metric MDS)**
 
 ------------------------------------------------------------------------
 
 ## MDS classique : idée générale
 
-But : retrouver les coordonnées des points à partir d’une matrice de distances $D = (d_{ij})$ supposées euclidiennes.
+Objectif : retrouver les coordonnées des points à partir d’une matrice de distances $D = (d_{ij})$ supposées euclidiennes.
 
 $$
 \|x_i - x_j\| \approx d_{ij}
@@ -84,43 +54,35 @@ Plutôt que de calculer $X$ directement, on travaille avec la matrice de produit
 B = X X'
 $$
 
-Si $X$ est centrée : $$
+Calcule de double centrage : $$
 B = -\frac{1}{2} C D_2 C
-$$ où \$ C \$est la matrice de centrage.
+$$ où $$C $$ est la matrice de centrage.
+
+--\> On centre les distances autour du centre de gravité pour garantir une représentation équilibrée.
 
 ------------------------------------------------------------------------
 
 ## Étapes du calcul
 
-Données d’entrée : la matrice des distances $D = (d_{ij})$.
+Matrice des distances $D = (d_{ij})$
 
-Centrage double : $$
-B = -\frac{1}{2} C D_2 C
-$$
+Matrice des carrés $D^2 = (d^2_{ij})$
 
-Décomposition en valeurs propres : $$
-B = V \Lambda V'
-$$
+Centrage de la matrice : $B = -\frac{1}{2} C D_2 C$
 
-Coordonnées finales : $$
-X = V \Lambda^{1/2}
-$$
+Décomposition en valeurs propres : $B = V \Lambda V'$
 
-*Exemple:*\
-**Distances → Matrice B → Décomposition → Coordonnées (R²)**
+Coordonnées finales : $X^{(p)} = V_p \Lambda_p^{1/2}$
 
-------------------------------------------------------------------------
+-   $\Lambda_p$ = sous-matrice $(p \times p)$ des plus grandes valeurs propres qui mesurent la variance sur chaque axe
 
-## Réduction des dimensions
+-   $V_p$ = les colonnes associées de $V$ qui contient les vecteurs propres qui définissent les axes principaux
 
-Souvent, on garde seulement les $p$ premières composantes correspondant aux plus grandes valeurs propres : $$
-X^{(p)} = V_p \Lambda_p^{1/2}
-$$ où :\
-- $\Lambda_p$ = sous-matrice $(p \times p)$ des plus grandes valeurs propres\
-- $V_p$ = les colonnes associées de $V$
+-   Les lignes de $X^p$ donnent les coordonnées des individus dans un espace p-dimensionnel (souvent petit avec p=2)
 
-Les colonnes de $X^{(p)}$ sont les axes principaux (comme en ACP).\
-On obtient une carte 2D/3D qui préserve au mieux les distances.
+-   Les colonnes de $X^{(p)}$ sont les axes principaux de cet espace
+
+On obtient une carte 2D/3D qui préserve au mieux les distances. En MDS classique celles-ci sont supposées euclidienne donc la reconstruction est exacte sinon on obtient la meilleure approximation.
 
 ------------------------------------------------------------------------
 
@@ -128,25 +90,23 @@ On obtient une carte 2D/3D qui préserve au mieux les distances.
 
 -   Conserve les distances euclidiennes autant que possible
 
--   Produit des coordonnées centrées et ordonnées par importance (variance)
+-   Produit des axes principaux ordonnés selon leur importance qui maximisent la variance expliquées par les distances
 
 -   Permet une visualisation claire des relations entre objets
 
--   Proche de l’ACP, mais part d’une matrice de distances.
+-   Proche de l’ACP mais
 
-    Voir les 3 exemples pdf
+    -   ACP part d'un tableau de variables –\> matrice de covariance
+
+    -   MDS part d'une matrice de distance –\> coordonnées
 
 ------------------------------------------------------------------------
 
-## Distance Scaling (mise à l’échelle des distances)
+## Exemple : perception de différents types de fraises
 
-Le MDS classique cherche une configuration $x_i$ telle que : $$
-d_{ij} \approx \hat{d}_{ij} = \|x_i - x_j\|_2
-$$
+4 types de fraises dégustées 2 fois par un jury composé de 12 personnes. Une note a été attibuée pour chaque descripteur sensoriel et pour chaque dégustation. On cherche à voir les différence et ressemblance entre les 4 types de fraises.
 
-La mise à l’échelle des distances assouplit cette contrainte en autorisant une transformation monotone : $$
-\hat{d}_{ij} \approx f(d_{ij})
-$$ où $f$ est une fonction monotone croissante.
+![](fraise plot.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -159,7 +119,33 @@ Différence avec le MDS classique :\
 Contrairement au cMDS, la mise à l’échelle des distances est un processus d’optimisation.\
 On cherche à minimiser une **fonction de stress**, et la solution est obtenue par des **algorithmes itératifs**.
 
-------------------------------------------------------------------------
++:---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \## Distance, dissimilarité et similarité                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Les notions de distance, dissimilarité et similarité (ou proximité) sont définies pour toute paire d’objets.                                                   |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| On peut se demander si les dissimilarités données sont **vraiment des distances**, et si elles peuvent être **interprétées comme des distances euclidiennes**. |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Étant donnée une matrice de dissimilarités \$ D = (d\_{ij}) \$, le MDS cherche à trouver des points \$ x_i,...x_n \$ appartenant à $\mathbb{R}^p$.             |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| tels que : $$                                                                                                                                                  |
+| d_{ij} \approx \|x_i - x_j\|_2                                                                                                                                 |
+| $$                                                                                                                                                             |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Si la configuration exacte existe → distance euclidienne\                                                                                                      |
+| Sinon → distance non euclidienne                                                                                                                               |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+## Exemple de distance non euclidienne
+
+La distance radiale sur un cercle (longueur de l’arc entre deux points) :
+
+Est bien une métrique,\
+Mais ne peut pas être représentée exactement dans un espace euclidien $\mathbb{R}^p$.
+
+Le MDS cherche une configuration approchée minimisant l’écart entre $d_{ij}$ et $\|x_i - x_j\|_2$.
+
+## Photo exemple dans pdf FR
 
 ## MDS métrique
 
@@ -212,10 +198,13 @@ Les erreurs sont pondérées par $d_{ij}$, la distance d'origine, les petites di
 
 ## Comparaison : cMDS vs Sammon Mapping
 
-| Méthode | Type | Objectif | Avantage principal |
-|----|----|----|----|
-| cMDS | Analytique | Préserver distances euclidiennes | Rapide, simple |
-| Sammon Mapping | Numérique | Pondérer les erreurs par distance | Meilleure préservation locale |
++----------------+-------------+-----------------------------------+-------------------------------+
+| Méthode        | Type        | Objectif                          | Avantage principal            |
++================+=============+===================================+===============================+
+| cMDS           | Analytique  | Préserver distances euclidiennes  | Rapide, simple                |
++----------------+-------------+-----------------------------------+-------------------------------+
+| Sammon Mapping | Numérique   | Pondérer les erreurs par distance | Meilleure préservation locale |
++----------------+-------------+-----------------------------------+-------------------------------+
 
 ------------------------------------------------------------------------
 
