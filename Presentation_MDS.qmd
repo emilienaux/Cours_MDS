@@ -1,0 +1,22 @@
+---
+title: "Présentation_MDS"
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+Bienvenue à ce cours sur la **méthode MDS** (MultiDimensional Scaling).
+
+---
+
+## Objectifs du cours
+
+- Comprendre le principe du MDS  
+- Savoir appliquer la méthode avec R  
+- Interpréter la carte perceptuelle obtenue
+---
+
+```{r}
+1 + 1
+```
