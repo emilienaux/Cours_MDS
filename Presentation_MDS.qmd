@@ -92,7 +92,7 @@ Si ( X ) est centrée : \[ B = -\frac{1}{2} C D\^{(2)} C \] où ( C = I - \frac{
 4.  **Coordonnées finales :** \[ X = V \Lambda\^{1/2} \]
 
 ::: fragment
-💡 *Pipeline du calcul :*\
+*Pipeline du calcul :*\
 **Distances → Matrice B → Décomposition → Coordonnées (R²)**
 :::
 
@@ -149,6 +149,144 @@ où ( f ) est une fonction **monotone croissante**.
 -   **MDS métrique :** les dissimilarités ( d\_{ij} ) sont **quantitatives**\
 -   **MDS non métrique :** les dissimilarités ( d\_{ij} ) sont **ordinales ou qualitatives**
 
-**Différence avec le MDS classique :** - cMDS : solution **analytique exacte** - (Non-)MDS métrique : solution **numérique** via **minimisation du stress** : \[ Stress = \sum*{i\<j} (d\*{ij} - \hat{d}\_{ij})\^2 \]
+**Différence avec le MDS classique :** Contrairement au **cMDS**, la **mise à l’échelle des distances** est un **processus d’optimisation** :\
+on cherche à **minimiser une fonction de stress** (mesurant la différence entre distances réelles et reconstruites),\
+et la solution est obtenue par des **algorithmes itératifs** (numériques).
+
+------------------------------------------------------------------------
+
+## MDS métrique
+
+Le **MDS métrique** (ou *metric MDS*) cherche une configuration optimale\
+( X \subset \mathbb{R}\^p ) et une fonction monotone ( f ) telles que :
+
+\[ f(d\_{ij}) \approx \hat{d}\_{ij} = \|x_i - x_j\|\_2 \]
+
+------------------------------------------------------------------------
+
+### Fonction monotone et stress
+
+-   ( f ) peut être une fonction **monotone paramétrique**, par exemple : \[ f(d\_{ij}) = \alpha + \beta d\_{ij} \]
+-   “Aussi proche que possible” est défini par la **perte quadratique** :
+
+\[ \text{Stress} = L(\hat{d}*{ij}) =* \left( \frac{ \sum_{i<j} (\hat{d}_{ij} - f(d_{ij}))^2 } { \sum d{ij}\^2 } \right)\^{1/2} \]
+
+Le MDS métrique **minimise ( L(**\hat{d}*{ij}) )\*\* sur (* \hat{d}{ij}, \alpha, \beta ).\
+Le cas particulier ( f(d\_{ij}) = d\_{ij} ) correspond au MDS classique\*\*,\
+mais les solutions diffèrent (optimisation numérique vs analytique).
+
+------------------------------------------------------------------------
+
+## Cartographie de Sammon (*Sammon Mapping*)
+
+La **cartographie de Sammon** est une **généralisation du MDS métrique**.
+
+### Fonction de stress de Sammon :
+
+\[ \text{Stress}*{*\text{Sammon}} = \frac{1}{\sum_{l<k} d_{lk}} \sum{i\<j} \frac{(\hat{d}_{ij} - d_{ij})^2}{d_{ij}} \]
+
+------------------------------------------------------------------------
+
+### Interprétation
+
+-   Les **erreurs** sont **pondérées** par la distance d’origine ( d\_{ij} ).\
+-   Les **petites distances** ont donc **plus de poids**, ce qui :
+    -   préserve mieux les **voisinages locaux**,\
+
+    -   donne une carte plus fidèle aux **structures fines** des données.
+
+    -   En conséquence, le Sammon mapping préserve les petits dij , leur accordant
+
+        une plus grande importance dans la procédure d'ajustement que pour les valeurs plus élevées de dij\
+-   La solution optimale est obtenue par **calcul numérique**,\
+    souvent **initialisée avec la solution du cMDS**.
+
+![Illustration Sammon Mapping](img/sammon_mapping.png){width="60%"}
+
+------------------------------------------------------------------------
+
+## Comparaison : cMDS vs Sammon Mapping
+
+*(Exemple du PDF à insérer ici)*
+
+| Méthode | Type | Objectif | Avantage principal |
+|:-----------------|:-----------------|:-----------------|:-----------------|
+| **cMDS** | Analytique | Préserver distances euclidiennes | Rapide, simple |
+| **Sammon Mapping** | Numérique | Pondérer les erreurs par distance | Meilleure préservation locale |
+
+![Comparaison des cartes](img/cm_ds_vs_sammon.png){width="70%"}
+
+------------------------------------------------------------------------
+
+## MDS non métrique
+
+Dans de nombreuses applications, les dissimilarités ne sont **connues que par leur ordre de classement**.\
+Le MDS non métrique cherche une configuration ( X \subset \mathbb{R}\^p ) telle que :
+
+\[ f(d\_{ij}) \approx \hat{d}\_{ij} = \|x_i - x_j\|\_2 \]
+
+------------------------------------------------------------------------
+
+### Particularités
+
+-   Ici, ( f ) est **générale** et **non paramétrée**.\
+
+-   On cherche uniquement à **préserver l’ordre des dissimilarités** : \[ d\_{ij} \< d\_{kl} \iff f(d\_{ij}) \le f(d\_{kl}) \iff d\_{ij}^\*^ \le d\_{kl}\* \]
+
+-   Les valeurs ( d\_{ij}\^\* = f(d\_{ij}) ) sont appelées **disparités**.\
+    Le MDS non métrique est donc basé sur les **rangs** plutôt que sur les **valeurs absolues**.
+
+------------------------------------------------------------------------
+
+## MDS non métrique de Kruskal
+
+**Kruskal (1964)** propose de minimiser la fonction :
+
+\[ \text{Stress-1}( \hat{d}*{ij}, d*{ij}\^\* ) = \left( \frac{ \sum_{i<j} (\hat{d}_{ij} - d_{ij}^*)^2 } { \sum \hat{d}\_{ij}\^2 } \right)\^{1/2} \]
+
+------------------------------------------------------------------------
+
+### Interprétation
+
+-   Les dissimilarités initiales servent **seulement à comparer les ordres** :\
+    ( d\_{ij} \< d\_{kl} \< ... \< d\_{mn} )
+-   ( f ) agit comme une **régression monotone** entre dissimilarités et distances.\
+-   On approxime :
+    -   dissimilarités ( d\_{ij} ) → variables explicatives (x)
+    -   disparités ( d\_{ij}\^\* ) → valeurs ajustées (ŷ)
+
+![Illustration Kruskal MDS](img/kruskal_mds.png){width="60%"}
+
+------------------------------------------------------------------------
+
+## Exemple : reconnaissance de lettres
+
+*(Insérer ici l’exemple du PDF sur la reconnaissance de lettres)*
+
+![Reconnaissance de lettres MDS](img/letter_recognition.png){width="60%"}
+
+------------------------------------------------------------------------
+
+## Construction des dissimilarités
+
+Comment déduire les dissimilarités à partir d’une **matrice de similarité** ( \delta\_{ij} ) ?
+
+\[ d\_{ij} =
+
+\begin{cases}
+c - \delta_{ij}, & \text{si } i \neq j \\
+0, & \text{si } i = j
+\end{cases}
+
+\] avec ( c \ge \max(\delta\_{ij}) ).
+
+------------------------------------------------------------------------
+
+### Choix de la méthode
+
+-   Comme les dissimilarités ( d\_{ij} ) dépendent du **choix arbitraire** de ( c ),\
+    le **MDS non métrique** est souvent plus logique ici.\
+-   Cependant, les méthodes **métriques** (cMDS, Sammon)\
+    peuvent aussi donner de bons résultats.
 
 ------------------------------------------------------------------------

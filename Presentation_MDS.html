@@ -204,7 +204,7 @@ des points&nbsp;<img data-src="data:image/emf;base64,iVBORw0KGgoAAAANSUhEUgAAAEk
 <li class="fragment"><strong>Coordonnées finales :</strong> [ X = V ^{1/2} ]</li>
 </ol>
 <div class="fragment">
-<p>💡 <em>Pipeline du calcul :</em><br>
+<p><em>Pipeline du calcul :</em><br>
 <strong>Distances → Matrice B → Décomposition → Coordonnées (R²)</strong></p>
 </div>
 </section>
@@ -245,7 +245,152 @@ On obtient une <strong>carte 2D/3D</strong> qui préserve au mieux les distances
 </li>
 <li class="fragment"><strong>MDS non métrique :</strong> les dissimilarités ( d_{ij} ) sont <strong>ordinales ou qualitatives</strong></li>
 </ul>
-<p><strong>Différence avec le MDS classique :</strong> - cMDS : solution <strong>analytique exacte</strong> - (Non-)MDS métrique : solution <strong>numérique</strong> via <strong>minimisation du stress</strong> : [ Stress = (d*{ij} - _{ij})^2 ]</p>
+<p><strong>Différence avec le MDS classique :</strong> Contrairement au&nbsp;<strong>cMDS</strong>, la&nbsp;<strong>mise à l’échelle des distances</strong>&nbsp;est un&nbsp;<strong>processus d’optimisation</strong>&nbsp;:<br>
+on cherche à&nbsp;<strong>minimiser une fonction de stress</strong>&nbsp;(mesurant la différence entre distances réelles et reconstruites),<br>
+et la solution est obtenue par des&nbsp;<strong>algorithmes itératifs</strong>&nbsp;(numériques).</p>
+</section>
+<section id="mds-métrique" class="slide level2 center">
+<h2>MDS métrique</h2>
+<p>Le <strong>MDS métrique</strong> (ou <em>metric MDS</em>) cherche une configuration optimale<br>
+( X ^p ) et une fonction monotone ( f ) telles que :</p>
+<p>[ f(d_{ij}) _{ij} = |x_i - x_j|_2 ]</p>
+</section>
+<section class="slide level2 center">
+
+<h3 id="fonction-monotone-et-stress">Fonction monotone et stress</h3>
+<ul>
+<li class="fragment">( f ) peut être une fonction <strong>monotone paramétrique</strong>, par exemple : [ f(d_{ij}) = + d_{ij} ]</li>
+<li class="fragment">“Aussi proche que possible” est défini par la <strong>perte quadratique</strong> :</li>
+</ul>
+<p>[ = L(<em>{ij}) =</em> ( { d{ij}^2 } )^{1/2} ]</p>
+<p>Le MDS métrique <strong>minimise ( L(</strong><em>{ij}) )** sur (</em> , , ).<br>
+Le cas particulier ( f(d_{ij}) = d_{ij} ) correspond au MDS classique**,<br>
+mais les solutions diffèrent (optimisation numérique vs analytique).</p>
+</section>
+<section id="cartographie-de-sammon-sammon-mapping" class="slide level2 center">
+<h2>Cartographie de Sammon (<em>Sammon Mapping</em>)</h2>
+<p>La <strong>cartographie de Sammon</strong> est une <strong>généralisation du MDS métrique</strong>.</p>
+<h3 id="fonction-de-stress-de-sammon">Fonction de stress de Sammon :</h3>
+<p>[ <em>{</em>} = ]</p>
+</section>
+<section class="slide level2 center">
+
+<h3 id="interprétation">Interprétation</h3>
+<ul>
+<li class="fragment">Les <strong>erreurs</strong> sont <strong>pondérées</strong> par la distance d’origine ( d_{ij} ).<br>
+</li>
+<li class="fragment">Les <strong>petites distances</strong> ont donc <strong>plus de poids</strong>, ce qui :
+<ul>
+<li class="fragment"><p>préserve mieux les <strong>voisinages locaux</strong>,<br>
+</p></li>
+<li class="fragment"><p>donne une carte plus fidèle aux <strong>structures fines</strong> des données.</p></li>
+<li class="fragment"><p>En conséquence, le Sammon mapping préserve les petits dij , leur accordant</p>
+<p>une plus grande importance dans la procédure d’ajustement que pour les valeurs plus élevées de dij<br>
+</p></li>
+</ul></li>
+<li class="fragment">La solution optimale est obtenue par <strong>calcul numérique</strong>,<br>
+souvent <strong>initialisée avec la solution du cMDS</strong>.</li>
+</ul>
+
+<img data-src="img/sammon_mapping.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">Illustration Sammon Mapping</p></section>
+<section id="comparaison-cmds-vs-sammon-mapping" class="slide level2 center">
+<h2>Comparaison : cMDS vs Sammon Mapping</h2>
+<p><em>(Exemple du PDF à insérer ici)</em></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Méthode</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Objectif</th>
+<th style="text-align: left;">Avantage principal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>cMDS</strong></td>
+<td style="text-align: left;">Analytique</td>
+<td style="text-align: left;">Préserver distances euclidiennes</td>
+<td style="text-align: left;">Rapide, simple</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Sammon Mapping</strong></td>
+<td style="text-align: left;">Numérique</td>
+<td style="text-align: left;">Pondérer les erreurs par distance</td>
+<td style="text-align: left;">Meilleure préservation locale</td>
+</tr>
+</tbody>
+</table>
+
+<img data-src="img/cm_ds_vs_sammon.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Comparaison des cartes</p></section>
+<section id="mds-non-métrique" class="slide level2 center">
+<h2>MDS non métrique</h2>
+<p>Dans de nombreuses applications, les dissimilarités ne sont <strong>connues que par leur ordre de classement</strong>.<br>
+Le MDS non métrique cherche une configuration ( X ^p ) telle que :</p>
+<p>[ f(d_{ij}) _{ij} = |x_i - x_j|_2 ]</p>
+</section>
+<section class="slide level2 center">
+
+<h3 id="particularités">Particularités</h3>
+<ul>
+<li class="fragment"><p>Ici, ( f ) est <strong>générale</strong> et <strong>non paramétrée</strong>.<br>
+</p></li>
+<li class="fragment"><p>On cherche uniquement à <strong>préserver l’ordre des dissimilarités</strong> : [ d_{ij} &lt; d_{kl} f(d_{ij}) f(d_{kl}) d_{ij}<sup>*</sup> d_{kl}* ]</p></li>
+<li class="fragment"><p>Les valeurs ( d_{ij}^* = f(d_{ij}) ) sont appelées <strong>disparités</strong>.<br>
+Le MDS non métrique est donc basé sur les <strong>rangs</strong> plutôt que sur les <strong>valeurs absolues</strong>.</p></li>
+</ul>
+</section>
+<section id="mds-non-métrique-de-kruskal" class="slide level2 center">
+<h2>MDS non métrique de Kruskal</h2>
+<p><strong>Kruskal (1964)</strong> propose de minimiser la fonction :</p>
+<p>[ ( <em>{ij}, d</em>{ij}^* ) = ( { _{ij}^2 } )^{1/2} ]</p>
+</section>
+<section class="slide level2 center">
+
+<h3 id="interprétation-1">Interprétation</h3>
+<ul>
+<li class="fragment">Les dissimilarités initiales servent <strong>seulement à comparer les ordres</strong> :<br>
+( d_{ij} &lt; d_{kl} &lt; … &lt; d_{mn} )</li>
+<li class="fragment">( f ) agit comme une <strong>régression monotone</strong> entre dissimilarités et distances.<br>
+</li>
+<li class="fragment">On approxime :
+<ul>
+<li class="fragment">dissimilarités ( d_{ij} ) → variables explicatives (x)</li>
+<li class="fragment">disparités ( d_{ij}^* ) → valeurs ajustées (ŷ)</li>
+</ul></li>
+</ul>
+
+<img data-src="img/kruskal_mds.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">Illustration Kruskal MDS</p></section>
+<section id="exemple-reconnaissance-de-lettres" class="slide level2 center">
+<h2>Exemple : reconnaissance de lettres</h2>
+<p><em>(Insérer ici l’exemple du PDF sur la reconnaissance de lettres)</em></p>
+
+<img data-src="img/letter_recognition.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">Reconnaissance de lettres MDS</p></section>
+<section id="construction-des-dissimilarités" class="slide level2 center">
+<h2>Construction des dissimilarités</h2>
+<p>Comment déduire les dissimilarités à partir d’une <strong>matrice de similarité</strong> ( _{ij} ) ?</p>
+<p>[ d_{ij} =</p>
+<span class="math display">\[\begin{cases}
+c - \delta_{ij}, &amp; \text{si } i \neq j \\
+0, &amp; \text{si } i = j
+\end{cases}\]</span>
+<p>] avec ( c (_{ij}) ).</p>
+</section>
+<section class="slide level2 center">
+
+<h3 id="choix-de-la-méthode">Choix de la méthode</h3>
+<ul>
+<li class="fragment">Comme les dissimilarités ( d_{ij} ) dépendent du <strong>choix arbitraire</strong> de ( c ),<br>
+le <strong>MDS non métrique</strong> est souvent plus logique ici.<br>
+</li>
+<li class="fragment">Cependant, les méthodes <strong>métriques</strong> (cMDS, Sammon)<br>
+peuvent aussi donner de bons résultats.</li>
+</ul>
 </section>
 <section class="slide level2 center">
 
